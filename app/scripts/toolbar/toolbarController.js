@@ -34,8 +34,7 @@ angular.module('ONApp').controller('toolbarController', ['$rootScope', '$scope',
         if (show) {
             $rootScope.$emit(CONSTANTS.NOTES_SELECTED_CONFIRM, false);
         } else {
-            $scope.searchQuery = '';
-            $scope.queryChanged();
+            $rootScope.$emit(CONSTANTS.NOTES_SEARCH_CANCELED);
         }
     });
 

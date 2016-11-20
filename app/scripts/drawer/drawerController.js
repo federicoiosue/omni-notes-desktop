@@ -49,6 +49,10 @@ angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', 
         filterOnNotesEvent();
     });
 
+    $rootScope.$on(CONSTANTS.NOTES_SEARCH_CANCELED, function(event) {
+        filterOnNotesEvent();
+    });
+
     function filterOnNotesEvent() {
         var navigationItem = navigationService.getNavigation();
         var navigationItemMenu = _.findWhere($scope.menu, {
