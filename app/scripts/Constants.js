@@ -6,6 +6,7 @@ ONApp.constant('CONSTANTS', {
     NOTES_SELECTED_CONFIRM: 'notes_selected_confirm',
     NOTES_SORTED: 'notes_sorted',
     NOTES_SEARCH_CANCELED: 'notes_search_canceled',
+    NAVIGATION_CHANGED: 'navigation_changed',
     CATEGORY_MODIFIED: 'category_modified',
     ATTACHMENTS_SUBFOLDER: 'attachments_subfolder'
 });

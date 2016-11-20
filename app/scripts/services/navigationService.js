@@ -1,10 +1,11 @@
-angular.module("ONApp").service('navigationService', ['storageService', function(storageService) {
+angular.module("ONApp").service('navigationService', ['$rootScope', 'CONSTANTS', 'storageService', function($rootScope, CONSTANTS, storageService) {
 
     var currentNavigationItem;
 
     this.setNavigation = function(navigationItem) {
         currentNavigationItem = navigationItem;
         storageService.put('currentNavigation', navigationItem);
+        $rootScope.$emit(CONSTANTS.NAVIGATION_CHANGED, navigationItem);
     };
 
     this.getNavigation = function() {

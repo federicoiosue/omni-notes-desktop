@@ -19,6 +19,10 @@ angular.module('ONApp').controller('toolbarController', ['$rootScope', '$scope',
         $scope.multiSelectionNumber = notes.length;
     });
 
+    $rootScope.$on(CONSTANTS.NAVIGATION_CHANGED, function() {
+        $scope.showSearch = false;
+    });
+
     $scope.exit = function() {
         $window.close();
     }
@@ -34,6 +38,7 @@ angular.module('ONApp').controller('toolbarController', ['$rootScope', '$scope',
         if (show) {
             $rootScope.$emit(CONSTANTS.NOTES_SELECTED_CONFIRM, false);
         } else {
+            $scope.searchQuery = '';
             $rootScope.$emit(CONSTANTS.NOTES_SEARCH_CANCELED);
         }
     });
