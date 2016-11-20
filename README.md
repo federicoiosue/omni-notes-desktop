@@ -1,5 +1,7 @@
 # Omni Notes Desktop
 
+[![Stories in Ready](https://badge.waffle.io/federicoiosue/omni-notes-desktop.png?label=ready&title=Ready)](http://waffle.io/federicoiosue/omni-notes-desktop)
+
 ![](etc/img1.png "Notes' list")
 
 This is the official desktop counterpart of the Android open-source note-taking app [Omni Notes](https://github.com/federicoiosue/Omni-Notes).
