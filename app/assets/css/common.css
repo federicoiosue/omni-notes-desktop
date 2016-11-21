@@ -72,13 +72,22 @@ ng-md-icon {
 }
 
 .note .attachment-container {
-    width: 100px;
+    position: relative;
+    left: 16px;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
 }
 
-.note img {
-    display: block;
-    width: 100% !important;
-    height: auto !important;
+.note .attachment-container img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .detail-attachments md-grid-tile {
