@@ -1,9 +1,10 @@
 # Omni Notes Desktop
 
 [![Stories in Ready](https://badge.waffle.io/federicoiosue/omni-notes-desktop.png?label=ready&title=Ready)](http://waffle.io/federicoiosue/omni-notes-desktop)
+[![Codacy grade](https://img.shields.io/codacy/grade/a8a70aae80314f78bae3042fcac432db.svg?style=plastic)](https://www.codacy.com/app/federico-iosue/omni-notes-desktop/dashboard)
 
-![](etc/img1.png "Notes' list")
-![](etc/img2.png "Note editing")
+<img src="https://github.com/federicoiosue/omni-notes-desktop/raw/develop/etc/img1.png" width="600" alt="Notes' list">
+<img src="https://github.com/federicoiosue/omni-notes-desktop/raw/develop/etc/img2.png" width="600" alt="Note editing">
 
 This is the official desktop counterpart of the Android open-source note-taking app [Omni Notes](https://github.com/federicoiosue/Omni-Notes).
 It's built on top [Electron](http://electron.atom.io) and [AngularJS](https://angularjs.org) technologies.
