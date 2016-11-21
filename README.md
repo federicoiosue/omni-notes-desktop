@@ -3,6 +3,7 @@
 [![Stories in Ready](https://badge.waffle.io/federicoiosue/omni-notes-desktop.png?label=ready&title=Ready)](http://waffle.io/federicoiosue/omni-notes-desktop)
 
 ![](etc/img1.png "Notes' list")
+![](etc/img2.png "Note editing")
 
 This is the official desktop counterpart of the Android open-source note-taking app [Omni Notes](https://github.com/federicoiosue/Omni-Notes).
 It's built on top [Electron](http://electron.atom.io) and [AngularJS](https://angularjs.org) technologies.
