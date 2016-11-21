@@ -51,6 +51,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             preserveScope: true,
             autoWrap: true,
             skipHide: true,
+            clickOutsideToClose: true,
             templateUrl: 'app/scripts/detail/attachmentDeletionDialog.html'
         }).then(function() {
             $scope.note.attachmentsListOld = $scope.note.attachmentsListOld || [];

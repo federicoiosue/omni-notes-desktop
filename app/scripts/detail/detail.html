@@ -1,5 +1,15 @@
 <md-dialog flex="70" class="note-detail">
 
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span>Edit</span>
+            <span flex></span>
+            <md-button class="md-icon-button" ngf-select="upload($files)" ngf-multiple="true" aria-label="Add attachments">
+                <ng-md-icon icon="attachment" />
+            </md-button>
+        </div>
+    </md-toolbar>
+
     <md-dialog-content layout="column" class="md-dialog-content">
 
         <md-input-container class="md-icon-float note-title">
@@ -10,12 +20,8 @@
             <textarea class="md-input" aria-label="Content" placeholder="Content" ng-model="note.content">{{note.content}}</textarea>
         </md-input-container>
 
-        <md-button class="md-icon-button" ngf-select="upload($files)" ngf-multiple="true" aria-label="Add attachments">
-            <ng-md-icon icon="attachment" />
-        </md-button>
-
         <div class="detail-attachments">
-            <md-grid-list md-cols-sm="2" md-cols-md="4" md-cols-lg="8" md-cols-gt-lg="12" md-row-height="4:3">
+            <md-grid-list md-cols-sm="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="4:3">
                 <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)" ng-right-click="deleteAttachment(attachment)" md-ink-ripple class="md-clickable">
                     <img ng-src="{{getNoteThumbnail(attachment)}}" alt="{{getNoteThumbnail(attachment)}}" />
                 </md-grid-tile>
