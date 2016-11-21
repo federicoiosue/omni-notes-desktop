@@ -157,6 +157,10 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
             });
     }
 
+    $scope.openAttachment = function(attachment) {
+        storageService.openAttachment(attachment);
+    }
+
     notesService.loadNotes($scope.notesBackupFolder);
 
 }]);

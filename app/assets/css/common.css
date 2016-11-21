@@ -57,6 +57,9 @@ ng-md-icon {
     font-weight: bold;
 }
 
+
+/* List */
+
 .selected-note {
     background-color: var(--selection-color);
 }
@@ -90,12 +93,20 @@ ng-md-icon {
     transform: translate(-50%, -50%);
 }
 
+
+/* Detail */
+
 .detail-attachments md-grid-tile {
-    transition: all 500ms ease-out 100ms;
+    /*transition: all 500ms ease-out 100ms;*/
     overflow: hidden;
     img {
         width: 100%;
         height: auto;
         cursor: pointer;
     }
+}
+
+.note-detail .note-title input {
+    font-weight: bolder;
+    font-size: x-large;
 }

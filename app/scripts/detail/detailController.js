@@ -34,8 +34,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
     }
 
     $scope.openAttachment = function(attachment) {
-
-
+        storageService.openAttachment(attachment);
     }
 
     $scope.deleteAttachment = function(attachmentToDelete) {

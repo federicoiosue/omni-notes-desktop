@@ -16,4 +16,21 @@ angular.module("ONApp").service("storageService", ['$rootScope', 'localStorageSe
         return this.get('notes_backup_folder') + '/files/';
     };
 
+    this.openAttachment = function(attachment) {
+        function getCommandLine() {
+            switch (process.platform) {
+                case 'darwin':
+                    return 'open';
+                case 'linux':
+                    return 'xdg-open';
+                default:
+                    return 'start';
+            }
+        }
+        var exec = require('child_process').exec;
+        var path = this.getAttachmentsFolder() + _.last(attachment.uriPath.split('/'));
+        exec(getCommandLine() + ' ' + path);
+    }
+
+
 }]);

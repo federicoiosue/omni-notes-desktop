@@ -6,6 +6,7 @@
     </div>
     <span flex></span>
     <div class="attachment-container">
-        <img ng-src="{{getNoteThumbnail(note)}}" alt="{{getNoteThumbnailShort(note)}}" ng-if="note.attachmentsList && note.attachmentsList.length" />
+        <img ng-src="{{getNoteThumbnail(note)}}" alt="{{getNoteThumbnailShort(note)}}" ng-if="note.attachmentsList && note.attachmentsList.length" ng-click="openAttachment(note.attachmentsList[0])" />
     </div>
+
 </md-item-content>
