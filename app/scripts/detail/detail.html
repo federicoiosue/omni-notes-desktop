@@ -7,6 +7,10 @@
             <md-button class="md-icon-button" ngf-select="upload($files)" ngf-multiple="true" aria-label="Add attachments">
                 <ng-md-icon icon="attachment" />
             </md-button>
+            <md-button class="md-icon-button" ng-click="setCategory()" aria-label="Change category">
+                <ng-md-icon ng-if="!note.category" icon="label_outline" />
+                <ng-md-icon ng-if="note.category" icon="label" style="fill: {{note.category.color}}" />
+            </md-button>
         </div>
     </md-toolbar>
 

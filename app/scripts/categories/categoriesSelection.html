@@ -1,13 +1,22 @@
-<md-list>
-    <md-list-item class="menu-item md-2-line" ng-repeat="(key, category) in categories" role="link" ng-click="categorySelected(category)">
-        <ng-md-icon icon="label" style="fill: {{category.color}}" />
-        <div class="md-list-item-text">
-            <span>{{category.name}}</span>
-        </div>
-    </md-list-item>
-</md-list>
+<md-dialog>
 
-<div layout="row">
-    <md-button class="md-warn" ng-click="removeCategory()" aria-label="Remove category">Remove category</md-button>
-    <md-button class="md-primary" ng-click="addNewCategory()" aria-label="Add new category">New category</md-button>
-</div>
+    <md-dialog-content class="md-dialog-content">
+        <md-list>
+            <md-list-item class="menu-item md-2-line" ng-repeat="(key, category) in categories" role="link" ng-click="categorySelected(category)" ng-class="{'nav-active': isPreselected(category)}">
+                <ng-md-icon icon="label" style="fill: {{category.color}}" />
+                <div class="md-list-item-text">
+                    <span>{{category.name}}</span>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-dialog-content>
+
+    <md-dialog-actions>
+        <md-button class="md-warn" ng-click="removeCategory()" aria-label="Remove category">Remove category</md-button>
+        <md-button ng-if="allowAdd" class="md-primary" ng-click="addNewCategory()" aria-label="Add new category">New category</md-button>
+    </md-dialog-actions>
+
+</md-dialog>
+</md-dialog-actions>
+
+</md-dialog>

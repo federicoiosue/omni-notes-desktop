@@ -62,4 +62,22 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
         });
     }
 
+    $scope.setCategory = function() {
+        $mdDialog.show({
+                skipHide: true,
+                controller: 'categoriesSelectionController',
+                templateUrl: 'app/scripts/categories/categoriesSelection.html',
+                clickOutsideToClose: true,
+                locals: {
+                    category: $scope.note.category,
+                    allowAdd: false
+                }
+            })
+            .then(function(category) {
+                if (category) {
+                    $scope.note.category = category;
+                }
+            });
+    }
+
 }]);

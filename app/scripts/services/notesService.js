@@ -108,14 +108,14 @@ angular.module("ONApp").service("notesService", ['$rootScope', '$log', 'CONSTANT
         else return value;
     }
 
-
     this.saveCategory = function(updatedCategory) {
         updatedCategory.id = updatedCategory.id || new Date().getTime();
         categories[updatedCategory.id] = updatedCategory;
+        var service = this;
         notes = _.each(notes, function(note) {
             if (note.category && note.category.id === updatedCategory.id) {
-                note.category = updatedCatego
-                    // fs.createReadStream(file.path).pipe(fs.createWriteStream(attachment.uriPath));ry;
+                note.category = updatedCategory;
+                service.saveNote(note, false, false);
             }
             return note;
         });

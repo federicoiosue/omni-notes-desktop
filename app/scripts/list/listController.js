@@ -135,7 +135,11 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         $mdDialog.show({
                 controller: 'categoriesSelectionController',
                 templateUrl: 'app/scripts/categories/categoriesSelection.html',
-                clickOutsideToClose: true
+                clickOutsideToClose: true,
+                locals: {
+                    category: {},
+                    allowAdd: true
+                }
             })
             .then(function(category) {
                 if (category) {
