@@ -1,5 +1,6 @@
 :root {
     --selection-color: #E7E7E7;
+    --gray: #BBB;
 }
 
 body {
@@ -59,6 +60,20 @@ ng-md-icon {
 
 
 /* List */
+
+.list-root {
+    height: 100%;
+}
+
+empty-view {
+    margin: auto;
+}
+
+empty-view p {
+    text-align: center;
+    color: var(--gray);
+    font-weight: bolder;
+}
 
 .selected-note {
     background-color: var(--selection-color);

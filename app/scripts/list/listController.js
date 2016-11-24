@@ -1,9 +1,10 @@
-angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys) {
+angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService) {
 
     $scope.notesBackupFolder = storageService.get('notes_backup_folder') || storageService.defaultNotesFolder();
     $scope.notes = [];
     $scope.selectedNotes = [];
     $scope.multiSelection = false;
+    $scope.currentNavigation = navigationService.getNavigation();
 
     // Keyboard shortcuts
     hotkeys.add({
@@ -39,6 +40,10 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         } else {
             $scope.cancelMultiSelection();
         }
+    });
+
+    $rootScope.$on(CONSTANTS.NAVIGATION_CHANGED, function(event, navigationItem) {
+        $scope.currentNavigation = navigationItem;
     });
 
     $scope.getNoteThumbnail = function(note) {

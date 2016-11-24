@@ -1,14 +1,17 @@
-<div ng-controller="listController" layout="column" class="relative">
+<div ng-controller="listController" layout="column" class="relative list-root
+">
 
     <md-button class="md-warn md-fab md-fab-bottom-right" ng-click="editNote()" aria-label="New note">
         <ng-md-icon icon=" edit " class="md-default-theme " />
     </md-button>
 
-    <md-content>
+    <md-content ng-if="notes.length">
         <md-list-item ng-repeat="note in notes track by note.creation" ng-click="noteClicked(note)" ng-right-click="noteRightClicked(note)" ng-class="{'selected-note': showAsSelected(note)}" aria-label="Note">
             <div ng-include="'app/scripts/list/note.html'" class="note" />
             <md-divider/>
         </md-list-item>
     </md-content>
+
+    <empty-view ng-if="!notes.length" navitem="currentNavigation"></empty-view>
 
 </div>
