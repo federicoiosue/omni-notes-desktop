@@ -28,9 +28,9 @@ angular.module('ONApp').controller('toolbarController', ['$rootScope', '$scope',
     }
 
     $scope.queryChanged = function() {
+        var regexp = new RegExp(escapeSearchQuery($scope.searchQuery));
         notesService.filterNotes(function(note) {
-            return (note.title && new RegExp($scope.searchQuery, "i").test(note.title)) ||
-                (note.content && new RegExp($scope.searchQuery, "i").test(note.content));
+            return (note.title && regexp.test(note.title)) || (note.content && regexp.test(note.content));
         });
     }
 
@@ -58,6 +58,10 @@ angular.module('ONApp').controller('toolbarController', ['$rootScope', '$scope',
             templateUrl: 'app/scripts/toolbar/sort.html',
             clickOutsideToClose: true
         });
+    }
+
+    var escapeSearchQuery = function(input) {
+        return input.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
     }
 
 }]);
