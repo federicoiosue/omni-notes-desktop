@@ -31,6 +31,21 @@ body {
     z-index: 80;
 }
 
+
+/*Toolbar*/
+
+md-toolbar.md-hue-1 {
+    background-color: #fff !important;
+}
+
+md-toolbar.md-hue-1 md-input-container {
+    top: 9px;
+    margin-right: 16px;
+}
+
+
+/*Sidenav*/
+
 #sidenav {
     height: 100%;
     overflow-y: scroll;
