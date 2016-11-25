@@ -5,31 +5,36 @@ angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', 
             return !note.archived && !note.trashed;
         },
         title: 'Notes',
-        icon: 'insert_drive_file'
+        icon: 'insert_drive_file',
+        fabVisible: true
     }, {
         filterPredicate: function(note) {
             return note.alarm;
         },
         title: 'Reminders',
-        icon: 'alarm'
+        icon: 'alarm',
+        fabVisible: true
     }, {
         filterPredicate: function(note) {
             return note.archived && !note.trashed;
         },
         title: 'Archive',
-        icon: 'archive'
+        icon: 'archive',
+        fabVisible: false
     }, {
         filterPredicate: function(note) {
             return note.trashed;
         },
         title: 'Trash',
-        icon: 'delete'
+        icon: 'delete',
+        fabVisible: false
     }, {
         filterPredicate: function(note) {
             return !note.category;
         },
         title: 'Uncategorized',
-        icon: 'label_outline'
+        icon: 'label_outline',
+        fabVisible: true
     }];
 
     $scope.menuFooter = [{

@@ -103,9 +103,27 @@ img.fit {
 }
 
 
+/* Fab */
+
+md-fab-speed-dial md-fab-trigger {
+    transition: 0.3s ease-in-out;
+}
+
+md-fab-speed-dial.ng-hide md-fab-trigger {
+    transform: scale(0);
+}
+
+md-fab-speed-dial.ng-hide-animate:not(.ng-hide) md-fab-trigger {
+    transform: scale(0);
+}
+
+
 /* Detail */
 
 .note-detail .note-title input {
     font-weight: bolder;
     font-size: x-large;
+}
+
+
 }

@@ -166,6 +166,10 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
             });
     }
 
+    $scope.isFabVisible = function() {
+        return $scope.currentNavigation.fabVisible;
+    }
+
     $scope.openAttachment = function(attachment) {
         storageService.openAttachment(attachment);
     }
