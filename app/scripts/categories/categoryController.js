@@ -1,6 +1,12 @@
 angular.module('ONApp').controller('categoryController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'category', '$mdDialog', 'hotkeys', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, category, $mdDialog, hotkeys) {
 
-    $scope.category = _.clone(category);
+    var initCategory = function(category) {
+        var category = _.clone(category);
+        if (!category.color) {
+            category.color = "#" + ((1 << 24) * Math.random() | 0).toString(16);
+        }
+        return category;
+    }
 
     // Keyboard shortcuts
     hotkeys.add({
@@ -29,5 +35,7 @@ angular.module('ONApp').controller('categoryController', ['$rootScope', '$scope'
             $mdDialog.hide($scope.category);
         }
     }
+
+    $scope.category = initCategory(category);
 
 }]);
