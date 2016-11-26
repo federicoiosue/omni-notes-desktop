@@ -1,6 +1,6 @@
 <md-dialog flex="70" class="note-detail">
 
-    <md-toolbar>
+    <md-toolbar class="md-whiteframe-3dp">
         <div class="md-toolbar-tools">
             <span>Edit</span>
             <span flex></span>
@@ -26,7 +26,7 @@
 
         <div class="detail-attachments">
             <md-grid-list md-cols-sm="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="1:1">
-                <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)" ng-right-click="deleteAttachment(attachment)" md-ink-ripple class="md-clickable">
+                <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)" ng-right-click="deleteAttachment(attachment)" md-ink-ripple class="md-clickable md-whiteframe-3dp">
                     <img class="fit" ng-src="{{getNoteThumbnail(attachment)}}" alt="{{getNoteThumbnail(attachment)}}" />
                 </md-grid-tile>
             </md-grid-list>

@@ -78,6 +78,10 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
             $scope.selectedNotes.push(note);
         } else {
             $scope.selectedNotes = _.without($scope.selectedNotes, note);
+            if (!$scope.selectedNotes.length) {
+                $scope.cancelMultiSelection();
+                return;
+            }
         }
         $rootScope.$emit(CONSTANTS.NOTES_SELECTED, $scope.selectedNotes);
     }
@@ -85,7 +89,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     $scope.cancelMultiSelection = function() {
         $scope.selectedNotes = [];
         $scope.multiSelection = false;
-        $rootScope.$emit(CONSTANTS.NOTES_SELECTED, $scope.selectedNotes);
+        $rootScope.$emit(CONSTANTS.NOTES_SELECTED, []);
     }
 
     $scope.showAsSelected = function(note) {
