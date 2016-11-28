@@ -5,8 +5,9 @@
         <p>{{note.content}}</p>
     </div>
     <span flex></span>
-    <div class="attachment-container">
-        <img class="fit" ng-src="{{getNoteThumbnail(note)}}" alt="{{getNoteThumbnailShort(note)}}" ng-if="note.attachmentsList && note.attachmentsList.length" ng-click="openAttachment(note.attachmentsList[0])" />
+
+    <div class="attachment-container" ng-if="note.attachmentsList && note.attachmentsList.length" ng-switch="expression" ng-click="openAttachment(note.attachmentsList[0])">
+        <img class="fit" ng-src="{{getNoteThumbnail(note)}}" alt="{{getNoteThumbnailAlt(note)}}" />
     </div>
 
 </md-item-content>

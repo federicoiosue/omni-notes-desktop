@@ -1,4 +1,4 @@
-angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', 'note', '$mdDialog', 'hotkeys', 'Upload', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, note, $mdDialog, hotkeys, Upload) {
+angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', 'note', '$mdDialog', 'hotkeys', 'Upload', 'thumbnailService', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, note, $mdDialog, hotkeys, Upload, thumbnailService) {
 
     $scope.note = _.clone(note);
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
@@ -18,7 +18,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
     }
 
     $scope.getNoteThumbnail = function(attachment) {
-        return $scope.attachmentsRoot + _.last(attachment.uriPath.split('/'));
+        return thumbnailService.getAttachmentThumbnail(attachment, $scope.attachmentsRoot);
     }
 
     $scope.upload = function(files) {

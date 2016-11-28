@@ -1,4 +1,4 @@
-angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService) {
+angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', 'thumbnailService', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService, thumbnailService) {
 
     $scope.notesBackupFolder = storageService.get('notes_backup_folder') || storageService.defaultNotesFolder();
     $scope.notes = [];
@@ -47,15 +47,11 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     });
 
     $scope.getNoteThumbnail = function(note) {
-        return note.attachmentsList && note.attachmentsList.length ?
-            $scope.notesBackupFolder + '/' + $scope.getNoteThumbnailShort(note) :
-            '';
+        return thumbnailService.getAttachmentThumbnail(note.attachmentsList[0], $scope.notesBackupFolder);
     }
 
-    $scope.getNoteThumbnailShort = function(note) {
-        return note.attachmentsList && note.attachmentsList.length ?
-            note.attachmentsList[0].uriPath.substring(note.attachmentsList[0].uriPath.lastIndexOf('files'), note.attachmentsList[0].uriPath.length) :
-            '';
+    $scope.getNoteThumbnailAlt = function(note) {
+        return note.attachmentsList[0].name;
     }
 
     $scope.noteClicked = function(note) {
