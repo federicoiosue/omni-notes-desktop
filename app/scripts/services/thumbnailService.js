@@ -1,4 +1,6 @@
-angular.module("ONApp").service('thumbnailService', ['$q', function ($q) {
+angular.module("ONApp").service('thumbnailService', ['$q', 'CONSTANTS', function ($q, CONSTANTS) {
+
+    var fs = require('fs-extra');
 
     this.getAttachmentThumbnail = function (attachment, attachmentsFolder) {
         if (attachment.mime_type.match('image')) {
@@ -19,20 +21,7 @@ angular.module("ONApp").service('thumbnailService', ['$q', function ($q) {
     };
 
     this.getPdfThumbnail = function (attachment, attachmentsFolder) {
-        var defer = $q.defer();
-        require('pdfjs-dist');
-        PDFJS.workerSrc = './node_modules/pdfjs-dist/build/pdf.worker.min.js';
-        var fs = require('fs');
-        var file = attachmentsFolder + '/' + _.last(attachment.uriPath.split('/'));
-        var data = new Uint8Array(fs.readFileSync(file));
-        PDFJS.getDocument(data)
-            .then(function (pdf) {
-                return pdf.getPage(1);
-            })
-            .then(function (page) {
-                defer.resolve(page);
-            });
-        return defer.promise;
+        return attachmentsFolder + '/' + attachment.id + CONSTANTS.ATTACHMENTS_THUMB_POSTFIX;
     };
 
     this.getVideoThumbnail = function (attachment, attachmentsFolder) {
@@ -41,6 +30,38 @@ angular.module("ONApp").service('thumbnailService', ['$q', function ($q) {
 
     this.getAudioThumbnail = function (attachment, attachmentsFolder) {
         return './app/assets/images/file-music.svg';
+    };
+
+    this.generatePdfThumbnail = function (attachment, attachmentsFolder) {
+        var defer = $q.defer();
+        require('pdfjs-dist');
+        var fs = require('fs');
+        var file = attachmentsFolder + '/' + _.last(attachment.uriPath.split('/'));
+        var data = new Uint8Array(fs.readFileSync(file));
+        var canvas = document.createElement('canvas');
+        PDFJS.workerSrc = './node_modules/pdfjs-dist/build/pdf.worker.min.js';
+        PDFJS.getDocument(data)
+            .then(function (pdf) {
+                return pdf.getPage(1);
+            })
+            .then(function (page) {
+                var viewport = page.getViewport(1.5);
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                return page.render({canvasContext: context, viewport: viewport});
+            })
+            .then(function () {
+                var data = canvas.toDataURL().replace(/^data:image\/\w+;base64,/, "");
+                var thumbFile = attachmentsFolder + '/' + attachment.id + CONSTANTS.ATTACHMENTS_THUMB_POSTFIX;
+                fs.writeFile(thumbFile, new Buffer(data, 'base64'), function (err) {
+                    if (err) {
+                        console.log("err", err);
+                    }
+                    defer.resolve();
+                });
+            });
+        return defer.promise;
     };
 
 }]);

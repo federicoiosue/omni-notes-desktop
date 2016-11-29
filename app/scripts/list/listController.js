@@ -189,10 +189,6 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         storageService.openAttachment(attachment);
     };
 
-    $scope.isPdf = function (note) {
-        return note.attachmentsList.length && note.attachmentsList[0].mime_type == 'application/pdf';
-    };
-
     notesService.loadNotes($scope.notesBackupFolder);
 
 }]);

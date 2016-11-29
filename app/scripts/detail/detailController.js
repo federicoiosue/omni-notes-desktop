@@ -42,7 +42,14 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             }
             _.each(files, function (file) {
                 var attachment = notesService.createNewAttachment(file, $scope.attachmentsRoot);
-                $scope.note.attachmentsList.push(attachment);
+                if (attachment.mime_type == 'application/pdf') {
+                    thumbnailService.generatePdfThumbnail(attachment, $scope.attachmentsRoot)
+                        .then(function () {
+                            $scope.note.attachmentsList.push(attachment);
+                        });
+                } else {
+                    $scope.note.attachmentsList.push(attachment);
+                }
             });
         }
     };
@@ -91,10 +98,6 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
                 $scope.note.category = category;
             }
         });
-    };
-
-    $scope.isPdf = function (attachment) {
-        return attachment.mime_type == 'application/pdf';
     };
 
 }]);
