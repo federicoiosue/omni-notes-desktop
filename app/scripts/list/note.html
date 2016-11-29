@@ -1,13 +1,15 @@
 <md-item-content layout="row">
-    <div class="category-ribbon" style="background: {{note.category ? note.category.color : 'transparent'}};" />
+    <div class="category-ribbon" style="background: {{note.category ? note.category.color : 'transparent'}};"/>
     <div layout="column">
         <h4>{{note.title}}</h4>
         <p>{{note.content}}</p>
     </div>
     <span flex></span>
 
-    <div class="attachment-container" ng-if="note.attachmentsList && note.attachmentsList.length" ng-switch="expression" ng-click="openAttachment(note.attachmentsList[0])">
-        <img class="fit" ng-src="{{getNoteThumbnail(note)}}" alt="{{getNoteThumbnailAlt(note)}}" />
+    <div class="attachment-container" ng-if="note.attachmentsList && note.attachmentsList.length" ng-switch="expression"
+         ng-click="openAttachment(note.attachmentsList[0])">
+        <img class="fit" ng-if="!isPdf(note)" ng-src="{{getNoteThumbnail(note)}}" alt="{{getNoteThumbnailAlt(note)}}"/>
+        <canvas id="pdf-{{note.attachmentsList[0].id}}" class="fit" ng-if="isPdf(note)" elem-ready="getNotePdfThumbnail(note)"/>
     </div>
 
 </md-item-content>

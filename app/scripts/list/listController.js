@@ -1,6 +1,7 @@
 angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', 'thumbnailService', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService, thumbnailService) {
 
     $scope.notesBackupFolder = storageService.get('notes_backup_folder') || storageService.defaultNotesFolder();
+    $scope.attachmentsRoot = storageService.getAttachmentsFolder();
     $scope.notes = [];
     $scope.selectedNotes = [];
     $scope.multiSelection = false;
@@ -47,12 +48,26 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     });
 
     $scope.getNoteThumbnail = function(note) {
-        return thumbnailService.getAttachmentThumbnail(note.attachmentsList[0], $scope.notesBackupFolder);
-    }
+        return thumbnailService.getAttachmentThumbnail(note.attachmentsList[0], $scope.attachmentsRoot);
+    };
+
+    $scope.getNotePdfThumbnail = function (note) {
+        thumbnailService.getAttachmentThumbnail(note.attachmentsList[0], $scope.attachmentsRoot)
+            .then(function (page) {
+                var viewport = page.getViewport(0.2);
+                var canvas = $('#pdf-' + note.attachmentsList[0].id)[0];
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                page.render({
+                    canvasContext: canvas.getContext('2d'),
+                    viewport: viewport
+                });
+            });
+    };
 
     $scope.getNoteThumbnailAlt = function(note) {
         return note.attachmentsList[0].name;
-    }
+    };
 
     $scope.noteClicked = function(note) {
         if (!$scope.multiSelection) {
@@ -60,14 +75,14 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         } else {
             selectNote(note);
         }
-    }
+    };
 
     $scope.noteRightClicked = function(note) {
         if (!$scope.multiSelection) {
             $scope.multiSelection = true;
         }
         selectNote(note);
-    }
+    };
 
     var selectNote = function(note) {
         if (!_.contains($scope.selectedNotes, note)) {
@@ -80,17 +95,17 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
             }
         }
         $rootScope.$emit(CONSTANTS.NOTES_SELECTED, $scope.selectedNotes);
-    }
+    };
 
     $scope.cancelMultiSelection = function() {
         $scope.selectedNotes = [];
         $scope.multiSelection = false;
         $rootScope.$emit(CONSTANTS.NOTES_SELECTED, []);
-    }
+    };
 
     $scope.showAsSelected = function(note) {
         return $scope.multiSelection && _.contains($scope.selectedNotes, note);
-    }
+    };
 
     $scope.editNote = function(note) {
         $scope.cancelMultiSelection();
@@ -103,7 +118,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
                 note: note
             }
         })
-    }
+    };
 
     // Bulk actions
 
@@ -119,22 +134,22 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     $scope.archiveNotes = function() {
         notesService.archiveNotes($scope.selectedNotes, true);
         $scope.selectedNotes = [];
-    }
+    };
 
     $scope.restoreFromArchiveNotes = function() {
         notesService.archiveNotes($scope.selectedNotes, false);
         $scope.selectedNotes = [];
-    }
+    };
 
     $scope.trashNotes = function() {
         notesService.trashNotes($scope.selectedNotes, true);
         $scope.selectedNotes = [];
-    }
+    };
 
     $scope.restoreFromTrashNotes = function() {
         notesService.trashNotes($scope.selectedNotes, false);
         $scope.selectedNotes = [];
-    }
+    };
 
     $scope.setCategory = function() {
         $mdDialog.show({
@@ -164,15 +179,19 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
                     });
                 }
             });
-    }
+    };
 
     $scope.isFabVisible = function() {
         return $scope.currentNavigation.fabVisible;
-    }
+    };
 
     $scope.openAttachment = function(attachment) {
         storageService.openAttachment(attachment);
-    }
+    };
+
+    $scope.isPdf = function(note) {
+        return note.attachmentsList.length && note.attachmentsList[0].mime_type == 'application/pdf';
+    };
 
     notesService.loadNotes($scope.notesBackupFolder);
 
