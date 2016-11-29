@@ -1,4 +1,4 @@
-angular.module('ONApp').controller('sortController', ['$rootScope', '$scope', '$q', '$log', '$mdDialog', 'CONSTANTS', 'notesService', function($rootScope, $scope, $q, $log, $mdDialog, CONSTANTS, notesService) {
+angular.module('ONApp').controller('sortController', ['$rootScope', '$scope', '$q', '$log', '$mdDialog', 'CONSTANTS', 'notesService', function ($rootScope, $scope, $q, $log, $mdDialog, CONSTANTS, notesService) {
 
     $scope.currentSortPredicate = notesService.getSortPredicate();
     $scope.currentSortDirection = notesService.getSortDirection();
@@ -31,25 +31,25 @@ angular.module('ONApp').controller('sortController', ['$rootScope', '$scope', '$
         icon: 'keyboard_arrow_up'
     }];
 
-    $scope.isCurrentSortOption = function(sortOption) {
+    $scope.isCurrentSortOption = function (sortOption) {
         return $scope.currentSortPredicate == sortOption.sortPredicate;
-    }
+    };
 
-    $scope.isCurrentSortDirection = function(sortDirection) {
+    $scope.isCurrentSortDirection = function (sortDirection) {
         return $scope.currentSortDirection == sortDirection.direction;
-    }
+    };
 
-    $scope.confirmSort = function() {
+    $scope.confirmSort = function () {
         notesService.sortNotes($scope.currentSortPredicate, $scope.currentSortDirection);
         $mdDialog.hide();
-    }
+    };
 
-    $scope.setSortOption = function(sortOption) {
+    $scope.setSortOption = function (sortOption) {
         $scope.currentSortPredicate = sortOption.sortPredicate;
-    }
+    };
 
-    $scope.setSortOptionDirection = function(sortOptionDirection) {
+    $scope.setSortOptionDirection = function (sortOptionDirection) {
         $scope.currentSortDirection = sortOptionDirection.direction;
-    }
+    };
 
 }]);

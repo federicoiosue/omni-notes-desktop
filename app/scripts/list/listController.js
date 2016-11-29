@@ -1,4 +1,4 @@
-angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', 'thumbnailService', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService, thumbnailService) {
+angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', 'thumbnailService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService, thumbnailService) {
 
     $scope.notesBackupFolder = storageService.get('notes_backup_folder') || storageService.defaultNotesFolder();
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
@@ -11,31 +11,31 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     hotkeys.add({
         combo: 'ctrl+n',
         description: 'New note',
-        callback: function() {
+        callback: function () {
             $scope.editNote();
         }
     });
     hotkeys.add({
         combo: 'ctrl+s',
         description: 'Save note or category',
-        callback: function() {
+        callback: function () {
             // Does nothing, just to fill shortcuts' spreadsheet
         }
     });
 
-    $rootScope.$on(CONSTANTS.NOTES_FILTERED, function(event, notes) {
+    $rootScope.$on(CONSTANTS.NOTES_FILTERED, function (event, notes) {
         $scope.cancelMultiSelection();
         $scope.notes = notes;
         $scope.$applyAsync();
     });
 
-    $rootScope.$on(CONSTANTS.NOTES_SORTED, function(event, notes) {
+    $rootScope.$on(CONSTANTS.NOTES_SORTED, function (event, notes) {
         $scope.cancelMultiSelection();
         $scope.notes = notes;
         $scope.$applyAsync();
     });
 
-    $rootScope.$on(CONSTANTS.NOTES_SELECTED_CONFIRM, function(event, confirmed) {
+    $rootScope.$on(CONSTANTS.NOTES_SELECTED_CONFIRM, function (event, confirmed) {
         if (confirmed) {
             $scope.showGridBottomSheet();
         } else {
@@ -43,11 +43,11 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         }
     });
 
-    $rootScope.$on(CONSTANTS.NAVIGATION_CHANGED, function(event, navigationItem) {
+    $rootScope.$on(CONSTANTS.NAVIGATION_CHANGED, function (event, navigationItem) {
         $scope.currentNavigation = navigationItem;
     });
 
-    $scope.getNoteThumbnail = function(note) {
+    $scope.getNoteThumbnail = function (note) {
         return thumbnailService.getAttachmentThumbnail(note.attachmentsList[0], $scope.attachmentsRoot);
     };
 
@@ -65,11 +65,11 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
             });
     };
 
-    $scope.getNoteThumbnailAlt = function(note) {
+    $scope.getNoteThumbnailAlt = function (note) {
         return note.attachmentsList[0].name;
     };
 
-    $scope.noteClicked = function(note) {
+    $scope.noteClicked = function (note) {
         if (!$scope.multiSelection) {
             $scope.editNote(note);
         } else {
@@ -77,14 +77,14 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         }
     };
 
-    $scope.noteRightClicked = function(note) {
+    $scope.noteRightClicked = function (note) {
         if (!$scope.multiSelection) {
             $scope.multiSelection = true;
         }
         selectNote(note);
     };
 
-    var selectNote = function(note) {
+    var selectNote = function (note) {
         if (!_.contains($scope.selectedNotes, note)) {
             $scope.selectedNotes.push(note);
         } else {
@@ -97,17 +97,17 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         $rootScope.$emit(CONSTANTS.NOTES_SELECTED, $scope.selectedNotes);
     };
 
-    $scope.cancelMultiSelection = function() {
+    $scope.cancelMultiSelection = function () {
         $scope.selectedNotes = [];
         $scope.multiSelection = false;
         $rootScope.$emit(CONSTANTS.NOTES_SELECTED, []);
     };
 
-    $scope.showAsSelected = function(note) {
+    $scope.showAsSelected = function (note) {
         return $scope.multiSelection && _.contains($scope.selectedNotes, note);
     };
 
-    $scope.editNote = function(note) {
+    $scope.editNote = function (note) {
         $scope.cancelMultiSelection();
         $mdDialog.show({
             templateUrl: 'app/scripts/detail/detail.html',
@@ -122,46 +122,46 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
 
     // Bulk actions
 
-    $scope.showGridBottomSheet = function() {
+    $scope.showGridBottomSheet = function () {
         $mdBottomSheet.show({
             templateUrl: 'app/scripts/list/list-bottom-sheet-template.html',
             controller: 'listBottomSheetController'
-        }).then(function(actionMethod, currentScope) {
+        }).then(function (actionMethod, currentScope) {
             $scope[actionMethod]();
         });
     };
 
-    $scope.archiveNotes = function() {
+    $scope.archiveNotes = function () {
         notesService.archiveNotes($scope.selectedNotes, true);
         $scope.selectedNotes = [];
     };
 
-    $scope.restoreFromArchiveNotes = function() {
+    $scope.restoreFromArchiveNotes = function () {
         notesService.archiveNotes($scope.selectedNotes, false);
         $scope.selectedNotes = [];
     };
 
-    $scope.trashNotes = function() {
+    $scope.trashNotes = function () {
         notesService.trashNotes($scope.selectedNotes, true);
         $scope.selectedNotes = [];
     };
 
-    $scope.restoreFromTrashNotes = function() {
+    $scope.restoreFromTrashNotes = function () {
         notesService.trashNotes($scope.selectedNotes, false);
         $scope.selectedNotes = [];
     };
 
-    $scope.setCategory = function() {
+    $scope.setCategory = function () {
         $mdDialog.show({
-                controller: 'categoriesSelectionController',
-                templateUrl: 'app/scripts/categories/categoriesSelection.html',
-                clickOutsideToClose: true,
-                locals: {
-                    category: {},
-                    allowAdd: true
-                }
-            })
-            .then(function(category) {
+            controller: 'categoriesSelectionController',
+            templateUrl: 'app/scripts/categories/categoriesSelection.html',
+            clickOutsideToClose: true,
+            locals: {
+                category: {},
+                allowAdd: true
+            }
+        })
+            .then(function (category) {
                 if (category) {
                     $log.debug('Set category "' + category.name);
                     notesService.setCategory($scope.selectedNotes, category);
@@ -174,22 +174,22 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
                         locals: {
                             category: {}
                         }
-                    }).then(function(category) {
+                    }).then(function (category) {
                         $scope.setCategory();
                     });
                 }
             });
     };
 
-    $scope.isFabVisible = function() {
+    $scope.isFabVisible = function () {
         return $scope.currentNavigation.fabVisible;
     };
 
-    $scope.openAttachment = function(attachment) {
+    $scope.openAttachment = function (attachment) {
         storageService.openAttachment(attachment);
     };
 
-    $scope.isPdf = function(note) {
+    $scope.isPdf = function (note) {
         return note.attachmentsList.length && note.attachmentsList[0].mime_type == 'application/pdf';
     };
 

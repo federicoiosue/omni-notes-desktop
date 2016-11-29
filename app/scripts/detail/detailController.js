@@ -1,4 +1,4 @@
-angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', 'note', '$mdDialog', 'hotkeys', 'Upload', 'thumbnailService', function($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, note, $mdDialog, hotkeys, Upload, thumbnailService) {
+angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', 'note', '$mdDialog', 'hotkeys', 'Upload', 'thumbnailService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, note, $mdDialog, hotkeys, Upload, thumbnailService) {
 
     $scope.note = _.clone(note) || {};
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
@@ -7,19 +7,19 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
     hotkeys.add({
         combo: 'ctrl+s',
         allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
-        callback: function() {
+        callback: function () {
             $scope.saveNote();
         }
     });
 
-    $scope.saveNote = function() {
+    $scope.saveNote = function () {
         notesService.saveNote($scope.note, true);
         $mdDialog.hide();
-    }
+    };
 
-    $scope.getNoteThumbnail = function(attachment) {
+    $scope.getNoteThumbnail = function (attachment) {
         return thumbnailService.getAttachmentThumbnail(attachment, $scope.attachmentsRoot);
-    }
+    };
 
     $scope.getNotePdfThumbnail = function (attachment) {
         thumbnailService.getAttachmentThumbnail(attachment, $scope.attachmentsRoot)
@@ -35,66 +35,65 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             });
     };
 
-    $scope.upload = function(files) {
+    $scope.upload = function (files) {
         if (files && files.length) {
             if (!$scope.note.attachmentsList) {
                 $scope.note.attachmentsList = [];
             }
-            _.each(files, function(file) {
+            _.each(files, function (file) {
                 var attachment = notesService.createNewAttachment(file, $scope.attachmentsRoot);
                 $scope.note.attachmentsList.push(attachment);
             });
         }
-    }
+    };
 
-    $scope.openAttachment = function(attachment) {
+    $scope.openAttachment = function (attachment) {
         storageService.openAttachment(attachment);
-    }
+    };
 
-    $scope.deleteAttachment = function(attachmentToDelete) {
+    $scope.deleteAttachment = function (attachmentToDelete) {
         $mdDialog.show({
             controllerAs: 'dialogCtrl',
-            controller: function($mdDialog) {
-                this.confirm = function() {
+            controller: function ($mdDialog) {
+                this.confirm = function () {
                     $mdDialog.hide();
-                }
-                this.cancel = function() {
+                };
+                this.cancel = function () {
                     $mdDialog.cancel();
-                }
+                };
             },
             preserveScope: true,
             autoWrap: true,
             skipHide: true,
             clickOutsideToClose: true,
             templateUrl: 'app/scripts/detail/attachmentDeletionDialog.html'
-        }).then(function() {
+        }).then(function () {
             $scope.note.attachmentsListOld = $scope.note.attachmentsListOld || [];
             $scope.note.attachmentsListOld.push(attachmentToDelete);
-            $scope.note.attachmentsList = _.reject($scope.note.attachmentsList, function(attachment) {
+            $scope.note.attachmentsList = _.reject($scope.note.attachmentsList, function (attachment) {
                 return attachment.id === attachmentToDelete.id;
             });
         });
-    }
+    };
 
-    $scope.setCategory = function() {
+    $scope.setCategory = function () {
         $mdDialog.show({
-                skipHide: true,
-                controller: 'categoriesSelectionController',
-                templateUrl: 'app/scripts/categories/categoriesSelection.html',
-                clickOutsideToClose: true,
-                locals: {
-                    category: $scope.note.category,
-                    allowAdd: false
-                }
-            })
-            .then(function(category) {
-                if (category) {
-                    $scope.note.category = category;
-                }
-            });
-    }
+            skipHide: true,
+            controller: 'categoriesSelectionController',
+            templateUrl: 'app/scripts/categories/categoriesSelection.html',
+            clickOutsideToClose: true,
+            locals: {
+                category: $scope.note.category,
+                allowAdd: false
+            }
+        }).then(function (category) {
+            if (category) {
+                $scope.note.category = category;
+            }
+        });
+    };
 
-    $scope.isPdf = function(attachment) {
+    $scope.isPdf = function (attachment) {
         return attachment.mime_type == 'application/pdf';
     };
 

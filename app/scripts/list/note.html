@@ -9,7 +9,8 @@
     <div class="attachment-container" ng-if="note.attachmentsList && note.attachmentsList.length" ng-switch="expression"
          ng-click="openAttachment(note.attachmentsList[0])">
         <img class="fit" ng-if="!isPdf(note)" ng-src="{{getNoteThumbnail(note)}}" alt="{{getNoteThumbnailAlt(note)}}"/>
-        <canvas id="pdf-{{note.attachmentsList[0].id}}" class="fit" ng-if="isPdf(note)" elem-ready="getNotePdfThumbnail(note)"/>
+        <canvas id="pdf-{{note.attachmentsList[0].id}}" class="fit" ng-if="isPdf(note)"
+                elem-ready="getNotePdfThumbnail(note)"/>
     </div>
 
 </md-item-content>

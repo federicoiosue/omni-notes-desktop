@@ -10,4 +10,4 @@ ONApp.directive('elemReady', function ($parse) {
             })
         }
     }
-})
+});

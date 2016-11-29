@@ -8,10 +8,9 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 0;
     background: transparent;
 }
-
 
 /*Workaround for nested dmDialog instances*/
 
@@ -31,7 +30,6 @@ body {
     z-index: 80;
 }
 
-
 /*Toolbar*/
 
 md-toolbar.md-hue-1 {
@@ -42,7 +40,6 @@ md-toolbar.md-hue-1 md-input-container {
     top: 9px;
     margin-right: 16px;
 }
-
 
 /*Sidenav*/
 
@@ -72,7 +69,6 @@ ng-md-icon {
     background-color: var(--selection-color);
     font-weight: bold;
 }
-
 
 /* List */
 
@@ -117,7 +113,6 @@ img.fit {
     object-fit: cover;
 }
 
-
 /* Fab */
 
 md-fab-speed-dial md-fab-trigger {
@@ -132,13 +127,9 @@ md-fab-speed-dial.ng-hide-animate:not(.ng-hide) md-fab-trigger {
     transform: scale(0);
 }
 
-
 /* Detail */
 
 .note-detail .note-title input {
     font-weight: bolder;
     font-size: x-large;
-}
-
-
 }

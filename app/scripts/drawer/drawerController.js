@@ -1,35 +1,35 @@
-angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', '$q', '$log', '$mdDialog', 'notesService', 'CONSTANTS', 'navigationService', function($rootScope, $scope, $q, $log, $mdDialog, notesService, CONSTANTS, navigationService) {
+angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', '$q', '$log', '$mdDialog', 'notesService', 'CONSTANTS', 'navigationService', function ($rootScope, $scope, $q, $log, $mdDialog, notesService, CONSTANTS, navigationService) {
 
     $scope.menu = [{
-        filterPredicate: function(note) {
+        filterPredicate: function (note) {
             return !note.archived && !note.trashed;
         },
         title: 'Notes',
         icon: 'insert_drive_file',
         fabVisible: true
     }, {
-        filterPredicate: function(note) {
+        filterPredicate: function (note) {
             return note.alarm;
         },
         title: 'Reminders',
         icon: 'alarm',
         fabVisible: true
     }, {
-        filterPredicate: function(note) {
+        filterPredicate: function (note) {
             return note.archived && !note.trashed;
         },
         title: 'Archive',
         icon: 'archive',
         fabVisible: false
     }, {
-        filterPredicate: function(note) {
+        filterPredicate: function (note) {
             return note.trashed;
         },
         title: 'Trash',
         icon: 'delete',
         fabVisible: false
     }, {
-        filterPredicate: function(note) {
+        filterPredicate: function (note) {
             return !note.category;
         },
         title: 'Uncategorized',
@@ -45,16 +45,16 @@ angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', 
 
     $scope.categories = {};
 
-    $rootScope.$on(CONSTANTS.NOTES_LOADED, function(event, notes) {
+    $rootScope.$on(CONSTANTS.NOTES_LOADED, function (event, notes) {
         $scope.categories = notesService.getCategories();
         filterOnNotesEvent();
     });
 
-    $rootScope.$on(CONSTANTS.NOTE_MODIFIED, function(event, notes) {
+    $rootScope.$on(CONSTANTS.NOTE_MODIFIED, function (event, notes) {
         filterOnNotesEvent();
     });
 
-    $rootScope.$on(CONSTANTS.NOTES_SEARCH_CANCELED, function(event) {
+    $rootScope.$on(CONSTANTS.NOTES_SEARCH_CANCELED, function (event) {
         filterOnNotesEvent();
     });
 
@@ -70,27 +70,27 @@ angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', 
         }
     }
 
-    $rootScope.$on(CONSTANTS.CATEGORY_MODIFIED, function(event, categories) {
+    $rootScope.$on(CONSTANTS.CATEGORY_MODIFIED, function (event, categories) {
         $scope.categories = categories;
     });
 
-    $scope.filterNotes = function(item) {
+    $scope.filterNotes = function (item) {
         notesService.filterNotes(item.filterPredicate);
         navigationService.setNavigation(item);
     };
 
-    $scope.filterCategory = function(category) {
-        notesService.filterNotes(function(note) {
+    $scope.filterCategory = function (category) {
+        notesService.filterNotes(function (note) {
             return note.category && note.category.id === category.id;
         });
         navigationService.setNavigation(category);
     };
 
-    $scope.isCurrentNavigation = function(item) {
+    $scope.isCurrentNavigation = function (item) {
         return navigationService.isCurrentNavigation(item);
-    }
+    };
 
-    $scope.editCategory = function(category) {
+    $scope.editCategory = function (category) {
         $mdDialog.show({
             templateUrl: 'app/scripts/categories/category.html',
             parent: angular.element(document.body),
@@ -100,9 +100,9 @@ angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', 
                 category: category
             }
         })
-    }
+    };
 
-    $scope.showSettings = function(ev) {
+    $scope.showSettings = function (ev) {
         $mdDialog.show({
             templateUrl: 'app/scripts/settings/settings.html',
             parent: angular.element(document.body),
@@ -110,4 +110,5 @@ angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', 
             clickOutsideToClose: true
         })
     };
+
 }]);

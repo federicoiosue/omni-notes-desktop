@@ -1,22 +1,22 @@
-angular.module("ONApp").service("storageService", ['$rootScope', 'localStorageService', function($rootScope, localStorageService) {
+angular.module("ONApp").service("storageService", ['$rootScope', 'localStorageService', function ($rootScope, localStorageService) {
 
-    this.put = function(key, value) {
+    this.put = function (key, value) {
         localStorageService.set(key, value);
     };
 
-    this.get = function(key) {
+    this.get = function (key) {
         return localStorageService.get(key);
     };
 
-    this.defaultNotesFolder = function() {
+    this.defaultNotesFolder = function () {
         return __dirname + '/data';
     };
 
-    this.getAttachmentsFolder = function() {
+    this.getAttachmentsFolder = function () {
         return this.get('notes_backup_folder') + '/files/';
     };
 
-    this.openAttachment = function(attachment) {
+    this.openAttachment = function (attachment) {
         function getCommandLine() {
             switch (process.platform) {
                 case 'darwin':
@@ -27,10 +27,10 @@ angular.module("ONApp").service("storageService", ['$rootScope', 'localStorageSe
                     return 'start';
             }
         }
+
         var exec = require('child_process').exec;
         var path = this.getAttachmentsFolder() + _.last(attachment.uriPath.split('/'));
         exec(getCommandLine() + ' ' + path);
-    }
-
+    };
 
 }]);
