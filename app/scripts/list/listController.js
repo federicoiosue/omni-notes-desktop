@@ -1,6 +1,6 @@
 angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', 'thumbnailService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService, thumbnailService) {
 
-    $scope.notesBackupFolder = storageService.get('notes_backup_folder') || storageService.defaultNotesFolder();
+    $scope.notesBackupFolder = storageService.getNotesFolder();
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
     $scope.notes = [];
     $scope.selectedNotes = [];
