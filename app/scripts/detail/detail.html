@@ -26,16 +26,12 @@
             <textarea class="md-input" aria-label="Content" placeholder="Content" ng-model="note.content">{{note.content}}</textarea>
         </md-input-container>
 
-        <div class="detail-attachments">
-            <md-grid-list md-cols-sm="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="1:1">
-                <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)"
-                              ng-right-click="deleteAttachment(attachment)" md-ink-ripple
-                              class="md-clickable md-whiteframe-3dp">
-                    <img class="fit" ng-src="{{getNoteThumbnail(attachment)}}"
-                         alt="{{getNoteThumbnail(attachment)}}"/>
-                </md-grid-tile>
-            </md-grid-list>
-        </div>
+        <md-grid-list md-cols-sm="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="1:1">
+            <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)"
+                          ng-right-click="deleteAttachment(attachment)" md-ink-ripple>
+                <div class="fit" ng-include="'app/scripts/attachments/attachment.html'"/>
+            </md-grid-tile>
+        </md-grid-list>
 
     </md-dialog-content>
 

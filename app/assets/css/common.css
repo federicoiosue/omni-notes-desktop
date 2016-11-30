@@ -107,7 +107,11 @@ empty-view p {
     height: 150px;
 }
 
-img.fit {
+.generic-attachment {
+    padding: 16px;
+}
+
+.fit {
     width: 100%;
     height: 100%;
     object-fit: cover;

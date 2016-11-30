@@ -12,7 +12,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         combo: 'ctrl+n',
         description: 'New note',
         callback: function () {
-            $scope.editNote();
+            $scope.editNote();a
         }
     });
     hotkeys.add({
@@ -46,28 +46,6 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     $rootScope.$on(CONSTANTS.NAVIGATION_CHANGED, function (event, navigationItem) {
         $scope.currentNavigation = navigationItem;
     });
-
-    $scope.getNoteThumbnail = function (note) {
-        return thumbnailService.getAttachmentThumbnail(note.attachmentsList[0], $scope.attachmentsRoot);
-    };
-
-    $scope.getNotePdfThumbnail = function (note) {
-        thumbnailService.getAttachmentThumbnail(note.attachmentsList[0], $scope.attachmentsRoot)
-            .then(function (page) {
-                var viewport = page.getViewport(0.2);
-                var canvas = $('#pdf-' + note.attachmentsList[0].id)[0];
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                page.render({
-                    canvasContext: canvas.getContext('2d'),
-                    viewport: viewport
-                });
-            });
-    };
-
-    $scope.getNoteThumbnailAlt = function (note) {
-        return note.attachmentsList[0].name;
-    };
 
     $scope.noteClicked = function (note) {
         if (!$scope.multiSelection) {

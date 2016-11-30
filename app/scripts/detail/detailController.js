@@ -17,24 +17,6 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
         $mdDialog.hide();
     };
 
-    $scope.getNoteThumbnail = function (attachment) {
-        return thumbnailService.getAttachmentThumbnail(attachment, $scope.attachmentsRoot);
-    };
-
-    $scope.getNotePdfThumbnail = function (attachment) {
-        thumbnailService.getAttachmentThumbnail(attachment, $scope.attachmentsRoot)
-            .then(function (page) {
-                var viewport = page.getViewport(0.2);
-                var canvas = $('#pdf-' + attachment.id)[0];
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                page.render({
-                    canvasContext: canvas.getContext('2d'),
-                    viewport: viewport
-                });
-            });
-    };
-
     $scope.upload = function (files) {
         if (files && files.length) {
             if (!$scope.note.attachmentsList) {

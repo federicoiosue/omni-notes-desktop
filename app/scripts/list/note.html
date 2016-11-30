@@ -6,9 +6,11 @@
     </div>
     <span flex></span>
 
-    <div class="attachment-container" ng-if="note.attachmentsList && note.attachmentsList.length" ng-switch="expression"
-         ng-click="openAttachment(note.attachmentsList[0])">
-        <img class="fit" ng-src="{{getNoteThumbnail(note)}}" alt="{{getNoteThumbnailAlt(note)}}"/>
+    <div class="attachment-container md-whiteframe-3dp"
+         ng-if="note.attachmentsList && note.attachmentsList.length"
+         ng-click="openAttachment(note.attachmentsList[0])"
+         ng-init="attachment = note.attachmentsList[0]">
+        <div ng-include="'app/scripts/attachments/attachment.html'"/>
     </div>
 
 </md-item-content>
