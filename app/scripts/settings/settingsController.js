@@ -1,7 +1,12 @@
-angular.module('ONApp').controller('settingsController', ["$scope", '$q', '$log', '$mdDialog', function($scope, $q, $log, $mdDialog) {
-    $log.debug('settings loaded');
+angular.module('ONApp').controller('settingsController', ['$rootScope', '$scope', '$mdDialog', 'CONSTANTS', 'storageService', function ($rootScope, $scope, $mdDialog, CONSTANTS, storageService) {
 
-    $scope.closeSettings = function() {
+    $scope.notesFolder = storageService.getNotesFolder();
+
+    $rootScope.$on(CONSTANTS.NOTES_LOADED, function () {
+        $scope.notesFolder = storageService.getNotesFolder();
+    });
+
+    $scope.closeSettings = function () {
         $mdDialog.hide();
     }
 
