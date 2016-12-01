@@ -60,7 +60,7 @@ angular.module('ONApp').controller('drawerController', ['$rootScope', '$scope', 
 
     function filterOnNotesEvent() {
         var navigationItem = navigationService.getNavigation();
-        var navigationItemMenu = _.findWhere($scope.menu, {
+        var navigationItemMenu = _.find($scope.menu, {
             title: navigationItem.title
         });
         if (navigationItemMenu) {
