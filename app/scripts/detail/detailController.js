@@ -1,6 +1,7 @@
 angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', 'note', '$mdDialog', 'hotkeys', 'Upload', 'thumbnailService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, note, $mdDialog, hotkeys, Upload, thumbnailService) {
 
-    $scope.note = _.cloneDeep(note) || {};
+    $scope.originalNote = note || {};
+    $scope.note = _.cloneDeep($scope.originalNote);
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
 
     // Keyboard shortcuts
@@ -11,6 +12,36 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             $scope.saveNote();
         }
     });
+
+    hotkeys.add({
+        combo: 'esc',
+        allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+        callback: function () {
+            confirmClosingModifiedNote();
+        }
+    });
+
+    var confirmClosingModifiedNote = function () {
+        if (_.isEqual($scope.note, $scope.originalNote)) {
+            $mdDialog.hide();
+            return;
+        }
+        $mdDialog.show({
+            controllerAs: 'dialogCtrl',
+            controller: function ($mdDialog) {
+                this.confirm = function () {
+                    $mdDialog.hide();
+                };
+            },
+            preserveScope: true,
+            autoWrap: true,
+            skipHide: true,
+            clickOutsideToClose: true,
+            templateUrl: 'app/scripts/detail/undoChangesDialog.html'
+        }).then(function () {
+            $mdDialog.hide();
+        });
+    };
 
     $scope.saveNote = function () {
         notesService.saveNote($scope.note, true);
@@ -57,8 +88,10 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             clickOutsideToClose: true,
             templateUrl: 'app/scripts/detail/attachmentDeletionDialog.html'
         }).then(function () {
-            $scope.note.attachmentsListOld = $scope.note.attachmentsListOld || [];
-            $scope.note.attachmentsListOld.push(attachmentToDelete);
+            if (_.includes($scope.originalNote.attachmentsList, attachmentToDelete)) {
+                $scope.note.attachmentsListOld = $scope.note.attachmentsListOld || [];
+                $scope.note.attachmentsListOld.push(attachmentToDelete);
+            }
             $scope.note.attachmentsList = _.reject($scope.note.attachmentsList, function (attachment) {
                 return attachment.id === attachmentToDelete.id;
             });
