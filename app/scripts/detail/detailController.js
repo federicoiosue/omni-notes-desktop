@@ -1,6 +1,6 @@
 angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', 'note', '$mdDialog', 'hotkeys', 'Upload', 'thumbnailService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, note, $mdDialog, hotkeys, Upload, thumbnailService) {
 
-    $scope.note = _.clone(note) || {};
+    $scope.note = _.cloneDeep(note) || {};
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
 
     // Keyboard shortcuts
@@ -17,7 +17,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
         $mdDialog.hide();
     };
 
-    $scope.upload = function (files) {
+    $scope.addAttachment = function (files) {
         if (files && files.length) {
             if (!$scope.note.attachmentsList) {
                 $scope.note.attachmentsList = [];

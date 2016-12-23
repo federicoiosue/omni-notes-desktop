@@ -4,7 +4,7 @@
         <div class="md-toolbar-tools">
             <span>Edit</span>
             <span flex></span>
-            <md-button class="md-icon-button" ngf-select="upload($files)" ngf-multiple="true"
+            <md-button class="md-icon-button" ngf-select="addAttachment($files)" ngf-multiple="true"
                        aria-label="Add attachments">
                 <ng-md-icon icon="attachment"/>
             </md-button>
@@ -26,7 +26,7 @@
             <textarea class="md-input" aria-label="Content" placeholder="Content" ng-model="note.content">{{note.content}}</textarea>
         </md-input-container>
 
-        <md-grid-list md-cols-sm="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="1:1">
+        <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="1:1">
             <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)"
                           ng-right-click="deleteAttachment(attachment)" md-ink-ripple>
                 <div class="fit" ng-include="'app/scripts/attachments/attachment.html'"/>
