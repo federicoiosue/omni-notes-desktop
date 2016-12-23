@@ -175,7 +175,9 @@ angular.module("ONApp").service("notesService", ['$rootScope', '$log', 'CONSTANT
     };
 
     function applyNotesSorting() {
-        notes = _.sortBy(notes, sortPredicate);
+        notes = _.sortBy(notes, [function(note) {
+            return typeof note[sortPredicate] == 'string' ? note[sortPredicate].toLowerCase() : sortPredicate;
+        }]);
         if ('DESC' == sortDirection) {
             notes.reverse();
         }
