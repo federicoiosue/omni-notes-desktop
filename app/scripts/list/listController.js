@@ -6,6 +6,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     $scope.selectedNotes = [];
     $scope.multiSelection = false;
     $scope.currentNavigation = navigationService.getNavigation();
+    $scope.currentSorting = storageService.get('sortPredicate') || 'title';
 
     // Keyboard shortcuts
     hotkeys.add({
@@ -32,6 +33,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     $rootScope.$on(CONSTANTS.NOTES_SORTED, function (event, notes) {
         $scope.cancelMultiSelection();
         $scope.notes = notes;
+        $scope.currentSorting = storageService.get('sortPredicate') || 'title';
         $scope.$applyAsync();
     });
 

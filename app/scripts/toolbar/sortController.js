@@ -4,19 +4,19 @@ angular.module('ONApp').controller('sortController', ['$rootScope', '$scope', '$
     $scope.currentSortDirection = notesService.getSortDirection();
 
     $scope.sortOptions = [{
-        sortPredicate: 'title',
+        sortPredicate: CONSTANTS.SORT_TITLE,
         title: 'Title',
         icon: 'sort_by_alpha'
     }, {
-        sortPredicate: 'alarm',
+        sortPredicate: CONSTANTS.SORT_ALARM,
         title: 'Reminder',
         icon: 'access_alarm'
     }, {
-        sortPredicate: 'creation',
+        sortPredicate: CONSTANTS.SORT_CREATION,
         title: 'Creation',
         icon: 'note_add'
     }, {
-        sortPredicate: 'lastModification',
+        sortPredicate: CONSTANTS.SORT_LAST_MODIFICATION,
         title: 'Last modification',
         icon: 'access_time'
     }];

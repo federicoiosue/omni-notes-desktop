@@ -13,8 +13,8 @@ var ONApp;
         'colorpicker.module',
         'LocalStorageModule',
         'cfp.hotkeys',
-        'ngFileUpload'
-    ])
+        'ngFileUpload',
+        'angularMoment'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {
