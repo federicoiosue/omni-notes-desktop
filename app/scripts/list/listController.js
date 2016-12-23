@@ -13,7 +13,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         combo: 'ctrl+n',
         description: 'New note',
         callback: function () {
-            $scope.editNote();a
+            $scope.editNote();
         }
     });
     hotkeys.add({
@@ -49,9 +49,9 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
         $scope.currentNavigation = navigationItem;
     });
 
-    $scope.noteClicked = function (note) {
+    $scope.noteClicked = function ($event, note) {
         if (!$scope.multiSelection) {
-            $scope.editNote(note);
+            $scope.editNote(note, $event.currentTarget);
         } else {
             selectNote(note);
         }
@@ -65,7 +65,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     };
 
     var selectNote = function (note) {
-        if (!_.contains($scope.selectedNotes, note)) {
+        if (!_.includes($scope.selectedNotes, note)) {
             $scope.selectedNotes.push(note);
         } else {
             $scope.selectedNotes = _.without($scope.selectedNotes, note);
@@ -84,16 +84,19 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     };
 
     $scope.showAsSelected = function (note) {
-        return $scope.multiSelection && _.contains($scope.selectedNotes, note);
+        return $scope.multiSelection && _.includes($scope.selectedNotes, note);
     };
 
-    $scope.editNote = function (note) {
+    $scope.editNote = function (note, currentTarget) {
+        currentTarget = currentTarget || '#fab';
         $scope.cancelMultiSelection();
         $mdDialog.show({
             templateUrl: 'app/scripts/detail/detail.html',
             parent: angular.element(document.body),
-            clickOutsideToClose: true,
+            clickOutsideToClose: false,
+            escapeToClose: false,
             controller: 'detailController',
+            openFrom: currentTarget,
             locals: {
                 note: note
             }
