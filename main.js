@@ -15,7 +15,7 @@ function createWindow() {
         width: 800,
         height: 600,
         autoHideMenuBar: true,
-        icon: __dirname + '/app/assets/images/logo.png'
+        icon: __dirname + '/icons/png/128x128.png'
     });
 
     // and load the index.html of the app.
