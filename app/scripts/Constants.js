@@ -8,5 +8,10 @@ ONApp.constant('CONSTANTS', {
     NOTES_SEARCH_CANCELED: 'notes_search_canceled',
     NAVIGATION_CHANGED: 'navigation_changed',
     CATEGORY_MODIFIED: 'category_modified',
-    ATTACHMENTS_SUBFOLDER: 'attachments_subfolder'
+    ATTACHMENTS_SUBFOLDER: 'attachments_subfolder',
+    ATTACHMENTS_THUMB_POSTFIX: '_thumb.jpg',
+    SORT_TITLE: 'title',
+    SORT_ALARM: 'alarm',
+    SORT_CREATION: 'creation',
+    SORT_LAST_MODIFICATION: 'lastModification'
 });

@@ -1,4 +1,4 @@
-angular.module('ONApp').controller('listBottomSheetController', ['$rootScope', '$scope', '$q', '$log', '$mdBottomSheet', 'navigationService', function($rootScope, $scope, $q, $log, $mdBottomSheet, navigationService) {
+angular.module('ONApp').controller('listBottomSheetController', ['$rootScope', '$scope', '$q', '$log', '$mdBottomSheet', 'navigationService', function ($rootScope, $scope, $q, $log, $mdBottomSheet, navigationService) {
 
     $scope.bottomSheetItems = [{
         method: 'setCategory',
@@ -33,8 +33,8 @@ angular.module('ONApp').controller('listBottomSheetController', ['$rootScope', '
     }];
 
 
-    $scope.actionSelected = function(bottomSheetItem) {
+    $scope.actionSelected = function (bottomSheetItem) {
         $mdBottomSheet.hide(bottomSheetItem.method);
-    }
+    };
 
 }]);

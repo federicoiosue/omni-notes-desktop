@@ -8,6 +8,6 @@ angular.module('ONApp').controller('settingsController', ['$rootScope', '$scope'
 
     $scope.closeSettings = function () {
         $mdDialog.hide();
-    }
+    };
 
 }]);

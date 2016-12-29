@@ -1,0 +1,5 @@
+<div class="date" ng-switch="currentSorting">
+    <p ng-switch-when="lastModification">Last modified <span am-time-ago="note.lastModification / 1000 | amFromUnix"></span></p>
+    <p ng-switch-when="alarm" ng-if="note.alarm">Reminder set <span am-time-ago="note.alarm / 1000 | amFromUnix"></span></p>
+    <p ng-switch-default>Created <span am-time-ago="note.creation / 1000 | amFromUnix"></span></p>
+</div>

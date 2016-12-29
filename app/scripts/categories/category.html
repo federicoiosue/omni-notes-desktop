@@ -3,20 +3,22 @@
     <md-dialog-content layout="column" class="md-dialog-content">
 
         <md-input-container class="md-icon-float md-input-has-messages">
-            <input type="text" class="md-input" aria-label="Name" placeholder="Name" ng-model="category.name" value="{{category.name}}" md-autofocus required>
+            <input type="text" class="md-input" aria-label="Name" placeholder="Name" ng-model="category.name"
+                   value="{{category.name}}" md-autofocus required>
             <div ng-messages="category.name.$error" ng-show="category.name.$dirty">
                 <div ng-message="required">This is required!</div>
             </div>
         </md-input-container>
 
         <md-input-container class="md-icon-float">
-            <textarea class="md-input" aria-label="Description" placeholder="Description" ng-model="category.description">{{category.description}}</textarea>
+            <textarea class="md-input" aria-label="Description" placeholder="Description"
+                      ng-model="category.description">{{category.description}}</textarea>
         </md-input-container>
 
         <md-input-container>
             Color
             <span colorpicker colorpicker-position="top" ng-model="category.color">
-            <ng-md-icon icon="label" style="fill: {{category.color}}" />
+            <ng-md-icon icon="label" style="fill: {{category.color}}"/>
         </span>
         </md-input-container>
 

@@ -4,12 +4,13 @@
         <div class="md-toolbar-tools">
             <span>Edit</span>
             <span flex></span>
-            <md-button class="md-icon-button" ngf-select="upload($files)" ngf-multiple="true" aria-label="Add attachments">
-                <ng-md-icon icon="attachment" />
+            <md-button class="md-icon-button" ngf-select="addAttachment($files)" ngf-multiple="true"
+                       aria-label="Add attachments">
+                <ng-md-icon icon="attachment"/>
             </md-button>
             <md-button class="md-icon-button" ng-click="setCategory()" aria-label="Change category">
-                <ng-md-icon ng-if="!note.category" icon="label_outline" />
-                <ng-md-icon ng-if="note.category" icon="label" style="fill: {{note.category.color}}" />
+                <ng-md-icon ng-if="!note.category" icon="label_outline"/>
+                <ng-md-icon ng-if="note.category" icon="label" style="fill: {{note.category.color}}"/>
             </md-button>
         </div>
     </md-toolbar>
@@ -17,20 +18,20 @@
     <md-dialog-content layout="column" class="md-dialog-content">
 
         <md-input-container class="md-icon-float note-title">
-            <input type="text" class="md-input" aria-label="Title" placeholder="Title" ng-model="note.title" value="{{note.title}}" md-autofocus>
+            <input type="text" class="md-input" aria-label="Title" placeholder="Title" ng-model="note.title"
+                   value="{{note.title}}" md-autofocus>
         </md-input-container>
 
         <md-input-container class="md-icon-float md-input-has-messages">
             <textarea class="md-input" aria-label="Content" placeholder="Content" ng-model="note.content">{{note.content}}</textarea>
         </md-input-container>
 
-        <div class="detail-attachments">
-            <md-grid-list md-cols-sm="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="1:1">
-                <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)" ng-right-click="deleteAttachment(attachment)" md-ink-ripple class="md-clickable md-whiteframe-3dp">
-                    <img class="fit" ng-src="{{getNoteThumbnail(attachment)}}" alt="{{getNoteThumbnail(attachment)}}" />
-                </md-grid-tile>
-            </md-grid-list>
-        </div>
+        <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="1:1">
+            <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)"
+                          ng-right-click="deleteAttachment(attachment)" md-ink-ripple>
+                <div class="fit" ng-include="'app/scripts/attachments/attachment.html'"/>
+            </md-grid-tile>
+        </md-grid-list>
 
     </md-dialog-content>
 

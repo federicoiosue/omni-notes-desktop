@@ -28,6 +28,14 @@ sudo npm install electron-packager -g
 
 After that simply run ```electron-packager .``` command from inside the project app to build for your platform.
 
+Otherwise here the specific platform shortcuts for build commands (64bit architectures for Linux and MacOS, 32bit for Windows) that will prepare distributable folders into _dist_:
+
+```package-linux```
+
+```package-mac```
+
+```package-win```
+
 ## Developed with love and passion by
 * Federico Iosue - [Website](http://www.iosue.it/federico)
 
