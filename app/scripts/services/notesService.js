@@ -83,8 +83,8 @@ angular.module("ONApp").service("notesService", ['$rootScope', '$log', 'CONSTANT
         } else {
             updatedNote.creation = now;
             notes.push(updatedNote);
-            applyNotesSorting();
         }
+        applyNotesSorting();
         fs.writeFile(storageService.get('notes_backup_folder') + '/' + updatedNote.creation + '.json', JSON.stringify(updatedNote, replacer), function (err) {
             if (err) throw err;
             if (!emitEvent) {
@@ -176,7 +176,7 @@ angular.module("ONApp").service("notesService", ['$rootScope', '$log', 'CONSTANT
 
     function applyNotesSorting() {
         notes = _.sortBy(notes, [function(note) {
-            return typeof note[sortPredicate] == 'string' ? note[sortPredicate].toLowerCase() : sortPredicate;
+            return typeof note[sortPredicate] == 'string' ? note[sortPredicate].toLowerCase() : note[sortPredicate];
         }]);
         if ('DESC' == sortDirection) {
             notes.reverse();
