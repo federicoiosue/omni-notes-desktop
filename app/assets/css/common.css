@@ -92,6 +92,7 @@ empty-view p {
 
 .note {
     width: 100%;
+    height: 150px;
 }
 
 .note .category-ribbon {
@@ -118,7 +119,15 @@ empty-view p {
     overflow: hidden;
 }
 
-.date {
+.note-container {
+    height: 100%;
+}
+
+.note-title, .note-body, .note-date {
+    margin: 0;
+}
+
+.note-date {
     font-size: x-small;
 }
 
