@@ -106,17 +106,17 @@ empty-view p {
     left: 16px;
     width: 150px;
     height: 150px;
+    overflow: hidden;
+}
+
+    .attachment {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 
 .generic-attachment {
     padding: 16px;
-}
-
-.fit {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
 }
 
 .note-container {
@@ -151,4 +151,14 @@ md-fab-speed-dial.ng-hide-animate:not(.ng-hide) md-fab-trigger {
 .note-detail .note-title input {
     font-weight: bolder;
     font-size: x-large;
+}
+
+.note-detail .attachment-container {
+    width: 100%;
+    height: 100%;
+}
+
+.note-detail .attachment {
+    width: 100%;
+    height: 100%;
 }

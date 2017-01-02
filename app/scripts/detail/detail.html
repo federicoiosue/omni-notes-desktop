@@ -29,7 +29,7 @@
         <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="2" md-cols-lg="3" md-cols-gt-lg="4" md-row-height="1:1">
             <md-grid-tile ng-repeat="attachment in note.attachmentsList" ng-click="openAttachment(attachment)"
                           ng-right-click="deleteAttachment(attachment)" md-ink-ripple>
-                <div class="fit" ng-include="'app/scripts/attachments/attachment.html'"/>
+                <div class="attachment-container" ng-include="'app/scripts/attachments/attachment.html'"/>
             </md-grid-tile>
         </md-grid-list>
 
