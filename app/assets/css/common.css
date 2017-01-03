@@ -127,6 +127,19 @@ empty-view p {
     margin: 0;
 }
 
+.note-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.note-body {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .note-date {
     font-size: x-small;
 }

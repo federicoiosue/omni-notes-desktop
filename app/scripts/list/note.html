@@ -1,17 +1,16 @@
-<md-item-content layout="row" class="note-container">
+<md-item-conteznt layout="row" class="note-container">
     <div class="category-ribbon" style="background: {{note.category ? note.category.color : 'transparent'}};"/>
-    <div layout="column">
-        <h4 class="note-title">{{note.title}}</h4>
+    <div layout="column" flex>
+        <h3 class="note-title">{{note.title}}</h3>
         <p flex class="note-body">{{note.content}}</p>
         <div ng-include="'app/scripts/list/note-date.html'"/>
     </div>
-    <span flex></span>
 
-    <div class="attachment-container md-whiteframe-3dp"
+    <div class="attachment-container"
          ng-if="note.attachmentsList && note.attachmentsList.length"
          ng-click="openAttachment(note.attachmentsList[0])"
          ng-init="attachment = note.attachmentsList[0]">
         <div ng-include="'app/scripts/attachments/attachment.html'"/>
     </div>
 
-</md-item-content>
+</md-item-conteznt>
