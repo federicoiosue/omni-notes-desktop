@@ -1,4 +1,4 @@
-angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', 'thumbnailService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService, thumbnailService) {
+angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', '$mdDialog', '$mdBottomSheet', '$mdToast', 'hotkeys', 'navigationService', 'hotkeysRegistrationService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, $mdDialog, $mdBottomSheet, $mdToast, hotkeys, navigationService, hotkeysRegistrationService) {
 
     $scope.notesBackupFolder = storageService.getNotesFolder();
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
@@ -9,18 +9,17 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     $scope.currentSorting = storageService.get('sortPredicate') || 'title';
 
     // Keyboard shortcuts
+    function createHotkeysCheatsheet() {
+        hotkeysRegistrationService.createCheatSheet();
+    }
+
+    createHotkeysCheatsheet();
+
     hotkeys.add({
         combo: 'ctrl+n',
         description: 'New note',
         callback: function () {
             $scope.editNote();
-        }
-    });
-    hotkeys.add({
-        combo: 'ctrl+s',
-        description: 'Save note or category',
-        callback: function () {
-            // Does nothing, just to fill shortcuts' spreadsheet
         }
     });
 
@@ -101,6 +100,9 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
                 note: note
             }
         })
+        .finally(function() {
+            createHotkeysCheatsheet();
+        });
     };
 
     // Bulk actions

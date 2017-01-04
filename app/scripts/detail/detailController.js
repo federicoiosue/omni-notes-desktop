@@ -5,19 +5,32 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
 
     // Keyboard shortcuts
-    hotkeys.add({
-        combo: 'ctrl+s',
+    hotkeys.bindTo($scope).add({
+        combo: "ctrl+s",
         allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
         callback: function () {
             $scope.saveNote();
         }
-    });
-
-    hotkeys.add({
-        combo: 'esc',
+    }).add({
+        combo: "esc",
+        description: "Leaves note editing",
         allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
         callback: function () {
             confirmClosingModifiedNote();
+        }
+    }).add({
+        combo: "ctrl+c",
+        description: "Set category",
+        allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+        callback: function () {
+            $scope.setCategory();
+        }
+    }).add({
+        combo: 'ctrl+o',
+        description: 'Add attachments',
+        allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
+        callback: function () {
+            angular.element('#add-attachment-button').triggerHandler('click');
         }
     });
 
