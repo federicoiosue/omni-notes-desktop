@@ -1,0 +1,57 @@
+<div ng-controller='toolbarController'>
+
+    <!-- Standard toolbar -->
+    <md-toolbar ng-show="!showSearch && !multiSelection" class="md-whiteframe-3dp">
+        <div class="md-toolbar-tools">
+            <span>Omni Notes</span>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="showSearch = !showSearch" aria-label="Search">
+                <ng-md-icon icon="search"/>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="sort()" aria-label="Sort">
+                <ng-md-icon icon="sort"/>
+            </md-button>
+            <md-menu md-offset="0 -7">
+                <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                    <ng-md-icon icon="more_vert"/>
+                </md-button>
+                <md-menu-content width="2">
+                    <md-menu-item>
+                        <md-button ng-click="toggleHelp()"><span md-menu-align-target>Shortcuts</span></md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="exit()"><span md-menu-align-target>Exit</span></md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </md-toolbar>
+
+    <!-- Search toolbar -->
+    <md-toolbar ng-show="showSearch" class="md-hue-1 md-whiteframe-3dp">
+        <div class="md-toolbar-tools">
+            <md-button ng-click="showSearch = !showSearch" aria-label="Back">
+                <ng-md-icon icon="arrow_back" style="fill: #000"></ng-md-icon>
+            </md-button>
+            <md-input-container flex md-no-float>
+                <input placeholder="Enter search" ng-model="searchQuery" ng-change="queryChanged()"
+                       focus="{{showSearch}}"/>
+            </md-input-container>
+        </div>
+    </md-toolbar>
+
+    <!-- Multi-selection toolbar -->
+    <md-toolbar ng-show="multiSelection" class="md-whiteframe-3dp">
+        <div class="md-toolbar-tools">
+            <md-button ng-click="confirmMultiSelection(false)" aria-label="Back">
+                <ng-md-icon icon="arrow_back"></ng-md-icon>
+            </md-button>
+            {{multiSelectionNumber}}
+            <span flex></span>
+            <md-button ng-click="confirmMultiSelection(true)" aria-label="Confirm selection">
+                Confirm
+            </md-button>
+        </div>
+    </md-toolbar>
+
+</div>

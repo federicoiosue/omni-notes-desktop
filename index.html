@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Omni Notes</title>
+    <link rel="stylesheet" href="./app/assets/css/common.css" />
+    <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" href="./node_modules/angular-bootstrap-colorpicker/css/colorpicker.min.css" />
+    <link rel="stylesheet" href="./node_modules/angular-hotkeys/build/hotkeys.min.css" />
+</head>
+
+<body ng-app="ONApp" layout="column">
+
+    <div ng-include="'app/scripts/toolbar/toolbar.html'"></div>
+    <div role="main" layout="row">
+        <div ng-include="'app/scripts/drawer/drawer.html'"></div>
+        <ng-view id="rootView" ng-cloak></ng-view>
+    </div>
+
+    <script>
+        window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.js');
+
+    </script>
+
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular-route/angular-route.js"></script>
+    <script src="./node_modules/angular-aria/angular-aria.js"></script>
+    <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="./node_modules/angular-material/angular-material.js"></script>
+    <script src="./node_modules/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="./node_modules/svg-morpheus/compile/minified/svg-morpheus.js"></script>
+    <script src="./node_modules/lodash/lodash.js"></script>
+    <script src="./node_modules/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.min.js"></script>
+    <script src="./node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="./node_modules/angular-hotkeys/build/hotkeys.min.js"></script>
+    <script src="./node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+    <script src="./node_modules/moment/moment.js"></script>
+    <script src="./node_modules/angular-moment/angular-moment.js"></script>
+
+    <script src="./app/app.js"></script>
+    <script src="./app/scripts/Constants.js"></script>
+    <script src="./app/scripts/services/notesService.js"></script>
+    <script src="./app/scripts/services/storageService.js"></script>
+    <script src="./app/scripts/services/navigationService.js"></script>
+    <script src="./app/scripts/services/thumbnailService.js"></script>
+    <script src="./app/scripts/services/hotkeysRegistrationService.js"></script>
+    <script src="./app/scripts/toolbar/toolbarController.js"></script>
+    <script src="./app/scripts/toolbar/sortController.js"></script>
+    <script src="./app/scripts/drawer/drawerController.js"></script>
+    <script src="./app/scripts/categories/categoryController.js"></script>
+    <script src="./app/scripts/categories/categoriesSelectionController.js"></script>
+    <script src="./app/scripts/list/listController.js"></script>
+    <script src="./app/scripts/list/listBottomSheetController.js"></script>
+    <script src="./app/scripts/detail/detailController.js"></script>
+    <script src="./app/scripts/attachments/attachmentsController.js"></script>
+    <script src="./app/scripts/settings/settingsController.js"></script>
+    <script src="./app/scripts/settings/uploadDirective.js"></script>
+    <script src="./app/scripts/directives/focusDirective.js"></script>
+    <script src="./app/scripts/directives/rightClickDirective.js"></script>
+    <script src="./app/scripts/directives/emptyViewDirective.js"></script>
+    <script src="./app/scripts/directives/elemReadyDirective.js"></script>
+
+</body>
+
+</html>

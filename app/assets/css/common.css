@@ -1,0 +1,172 @@
+:root {
+    --selection-color: #E7E7E7;
+    --gray: #BBB;
+}
+
+body {
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+/*Workaround for nested dmDialog instances*/
+
+.md-dialog-backdrop:nth-of-type(even) {
+    z-index: 81;
+}
+
+.md-dialog-backdrop:nth-of-type(odd) {
+    z-index: 79;
+}
+
+.md-dialog-container:nth-of-type(even) {
+    z-index: 82;
+}
+
+.md-dialog-container:nth-of-type(odd) {
+    z-index: 80;
+}
+
+/*Toolbar*/
+
+md-toolbar.md-hue-1 {
+    background-color: #fff !important;
+}
+
+md-toolbar.md-hue-1 md-input-container {
+    top: 9px;
+    margin-right: 16px;
+}
+
+/*Sidenav*/
+
+#sidenav {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+#rootView {
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.menu-item ng-md-icon {
+    margin: auto;
+    margin-right: 15px;
+}
+
+ng-md-icon {
+    fill: currentColor;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+}
+
+.nav-active {
+    background-color: var(--selection-color);
+    font-weight: bold;
+}
+
+/* List */
+
+.list-root {
+    height: 100%;
+}
+
+empty-view {
+    margin: auto;
+}
+
+empty-view p {
+    text-align: center;
+    color: var(--gray);
+    font-weight: bolder;
+}
+
+.selected-note {
+    background-color: var(--selection-color);
+}
+
+.note {
+    width: 100%;
+    height: 150px;
+}
+
+.note .category-ribbon {
+    width: 15px;
+    position: relative;
+    left: -15px;
+}
+
+.note .attachment-container {
+    position: relative;
+    left: 16px;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+
+    .attachment {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.generic-attachment {
+    padding: 16px;
+}
+
+.note-container {
+    height: 100%;
+}
+
+.note-title, .note-body, .note-date {
+    margin: 0;
+}
+
+.note-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.note-body {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.note-date {
+    font-size: x-small;
+}
+
+
+/* Fab */
+
+md-fab-speed-dial md-fab-trigger {
+    transition: 0.3s ease-in-out;
+}
+
+md-fab-speed-dial.ng-hide md-fab-trigger {
+    transform: scale(0);
+}
+
+md-fab-speed-dial.ng-hide-animate:not(.ng-hide) md-fab-trigger {
+    transform: scale(0);
+}
+
+/* Detail */
+
+.note-detail .note-title input {
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+.note-detail .attachment-container, .note-detail .attachment-inner-container, .note-detail .attachment {
+    width: 100%;
+    height: 100%;
+}

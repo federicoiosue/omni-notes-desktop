@@ -1,0 +1,20 @@
+<md-list-item class="menu-item md-2-line" ng-repeat="sortOption in sortOptions" role="link"
+              ng-click="setSortOption(sortOption)" ng-class="{'nav-active': isCurrentSortOption(sortOption)}">
+    <ng-md-icon icon="{{sortOption.icon}}"/>
+    <div class="md-list-item-text">
+        <span>{{sortOption.title}}</span>
+    </div>
+</md-list-item>
+
+<md-divider/>
+
+<md-list-item class="menu-item md-2-line" ng-repeat="sortOptionDirection in sortOptionDirections" role="link"
+              ng-click="setSortOptionDirection(sortOptionDirection)"
+              ng-class="{'nav-active': isCurrentSortDirection(sortOptionDirection)}">
+    <ng-md-icon icon="{{sortOptionDirection.icon}}"/>
+    <div class="md-list-item-text">
+        <span>{{sortOptionDirection.title}}</span>
+    </div>
+</md-list-item>
+
+<md-button class="md-primary" ng-click="confirmSort()" aria-label="Confirm sort">Confirm</md-button>

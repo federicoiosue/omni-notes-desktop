@@ -1,0 +1,8 @@
+<div class="attachment-inner-container" ng-controller="attachmentsController" ng-switch="isImgOrPdf(attachment)">
+    <img ng-switch-when="true" class="attachment" ng-src="{{getNoteThumbnail(attachment)}}" alt="{{attachment.name}}"/>
+    <div ng-switch-default class="generic-attachment">
+        <p>{{attachment.name}}</p>
+        <img ng-src="{{getNoteThumbnail(attachment)}}" alt="{{attachment.name}}"/>
+        <span>{{getMimeTypeSimple(attachment)}}</span>
+    </div>
+</div>

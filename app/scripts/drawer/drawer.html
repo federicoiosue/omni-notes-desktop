@@ -1,0 +1,35 @@
+<md-sidenav id="sidenav" md-is-locked-open="true">
+    <div ng-controller='drawerController'>
+
+        <!-- Menu -->
+        <md-list-item class="menu-item md-2-line" ng-repeat="item in menu" role="link" ng-click="filterNotes(item)"
+                      ng-class="{'nav-active': isCurrentNavigation(item)}">
+            <ng-md-icon icon="{{item.icon}}"/>
+            <div class="md-list-item-text">
+                <span>{{item.title}}</span>
+            </div>
+        </md-list-item>
+
+        <!-- Categories -->
+        <md-divider ng-if="categories.length"/>
+        <md-list-item class="menu-item md-2-line" ng-repeat="(key, category) in categories" role="link"
+                      ng-click="filterCategory(category)" ng-right-click="editCategory(category)"
+                      ng-class="{'nav-active': isCurrentNavigation(category)}">
+            <ng-md-icon icon="label" style="fill: {{category.color}}"/>
+            <div class="md-list-item-text">
+                <span>{{category.name}}</span>
+            </div>
+        </md-list-item>
+
+        <!-- Footer -->
+        <md-divider/>
+        <md-list-item class="menu-item md-2-line" ng-repeat="item in menuFooter" role="link"
+                      ng-click="this[item.method](item.params)">
+            <ng-md-icon icon="{{item.icon}}"/>
+            <div class="md-list-item-text">
+                <span>{{item.title}}</span>
+            </div>
+        </md-list-item>
+
+    </div>
+</md-sidenav>

@@ -1,0 +1,50 @@
+{
+  "name": "omni-notes-desktop",
+  "version": "0.0.1",
+  "description": "Omni Notes desktop application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/mac/logo.icns --prune=true --out=dist",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/logo.ico --prune=true --out=dist --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Omni Notes\"",
+    "package-linux" : "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icons/png/512x512.png --prune=true --out=dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/federicoiosue/omni-notes-desktop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/federicoiosue/omni-notes-desktop/issues"
+  },
+  "keywords": [
+    "Electron",
+    "omni",
+    "notes",
+    "desktop"
+  ],
+  "author": "Federico Iosue",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron-prebuilt": "^0.37.2"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-bootstrap-colorpicker": "^3.0.25",
+    "angular-hotkeys": "^1.7.0",
+    "angular-local-storage": "^0.5.0",
+    "angular-material": "^1.1.1",
+    "angular-material-icons": "^0.7.1",
+    "angular-moment": "^1.0.1",
+    "angular-route": "^1.5.8",
+    "electron-is-dev": "^0.1.2",
+    "fs-extra": "^1.0.0",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.2",
+    "moment": "^2.17.1",
+    "ng-file-upload": "^12.2.13",
+    "pdfjs-dist": "^1.6.348",
+    "svg-morpheus": "^0.3.0"
+  }
+}

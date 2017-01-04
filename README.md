@@ -1,30 +1,67 @@
-# electron-quick-start
+# Omni Notes Desktop
 
-**Clone and run for a quick way to see an Electron in action.**
+[![Stories in Ready](https://badge.waffle.io/federicoiosue/omni-notes-desktop.png?label=ready&title=Ready)](http://waffle.io/federicoiosue/omni-notes-desktop)
+[![Codacy grade](https://img.shields.io/codacy/grade/a8a70aae80314f78bae3042fcac432db.svg?style=plastic)](https://www.codacy.com/app/federico-iosue/omni-notes-desktop/dashboard)
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start) within the Electron documentation.
+<img src="https://github.com/federicoiosue/omni-notes-desktop/raw/develop/etc/img1.png" width="600" alt="Notes' list">
+<img src="https://github.com/federicoiosue/omni-notes-desktop/raw/develop/etc/img2.png" width="600" alt="Note editing">
 
-A basic Electron application needs just these files:
+<img src="https://github.com/federicoiosue/omni-notes-desktop/raw/develop/etc/img3.png" width="600" alt="Keyboard hotkeys">
 
-- `index.html` - A web page to render.
-- `main.js` - Starts the app and creates a browser window to render HTML.
-- `package.json` - Points to the app's main file and lists its details and dependencies.
+This is the official desktop counterpart of the Android open-source note-taking app [Omni Notes](https://github.com/federicoiosue/Omni-Notes).
+It's built on top [Electron](http://electron.atom.io) and [AngularJS](https://angularjs.org) technologies.
 
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/latest/tutorial/quick-start).
+## Features
 
-## To Use
+- Textual notes with title and content
+- Full-text search
+- Sorting
+- Categorization
+- Attachments with thumbnails
+- Bulk actions (change category, archive, trash)
+- Keyboard hotkeys
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+### Todo
 
-```bash
-# Clone this repository
-git clone https://github.com/atom/electron-quick-start
-# Go into the repository
-cd electron-quick-start
-# Install dependencies and run the app
-npm install && npm start
+- Checklist implementation
+- Reminders
+- Geolocation
+
+## Compatibility
+
+The application is cross-platform and runs on Linux, Windows and Mac.
+
+It currently has no backend and just uses JSONs to store and read data. So, **no sync is supported**, if you want to keep data updated through different platforms you have to use third-party synchronization applications.
+
+## Development
+
+### Environment
+To download all the needed dependencies for the application to run, listed into the _package.json_ file use the command: ```npm install angular```
+
+### Build
+[Electron Packager](https://github.com/electron-userland/electron-packager) is needed to build the project into executable binary.
+```
+sudo npm install electron-packager -g
 ```
 
-Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/latest).
+After that simply run ```electron-packager .``` command from inside the project app to build for your platform.
 
-#### License [CC0 (Public Domain)](LICENSE.md)
+Otherwise here the specific platform shortcuts for build commands (64bit architectures for Linux and MacOS, 32bit for Windows) that will prepare distributable folders into _dist_:
+
+```
+package-linux
+```
+
+```
+package-mac
+```
+
+```
+package-win
+```
+
+## Developed with love and passion by
+* Federico Iosue - [Website](http://www.iosue.it/federico)
+
+## License
+The application is licensed under [GPL3](LICENSE.md) so, if you want to use it fully or any part of it you **have to** release the source code.

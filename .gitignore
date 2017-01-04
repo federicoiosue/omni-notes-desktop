@@ -1,0 +1,8 @@
+node_modules
+bower_components
+*.log
+.sonar
+data/
+omni-notes-desktop-*/
+*.iml
+.idea/

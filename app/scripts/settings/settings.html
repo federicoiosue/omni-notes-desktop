@@ -1,0 +1,20 @@
+<md-dialog flex="70" ng-controller='settingsController'>
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span>Settings</span>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content layout="column" class="md-dialog-content">
+
+        <h3>Omni Notes backup folder</h3>
+        <material-file-input notes-folder="{{notesFolder}}" />
+
+    </md-dialog-content>
+
+    <md-dialog-actions>
+        <md-button class="md-primary" ng-click="closeSettings()">Close</md-button>
+    </md-dialog-actions>
+
+</md-dialog>
