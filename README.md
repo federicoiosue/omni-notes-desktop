@@ -6,8 +6,26 @@
 <img src="https://github.com/federicoiosue/omni-notes-desktop/raw/develop/etc/img1.png" width="600" alt="Notes' list">
 <img src="https://github.com/federicoiosue/omni-notes-desktop/raw/develop/etc/img2.png" width="600" alt="Note editing">
 
+<img src="https://github.com/federicoiosue/omni-notes-desktop/raw/develop/etc/img3.png" width="600" alt="Keyboard hotkeys">
+
 This is the official desktop counterpart of the Android open-source note-taking app [Omni Notes](https://github.com/federicoiosue/Omni-Notes).
 It's built on top [Electron](http://electron.atom.io) and [AngularJS](https://angularjs.org) technologies.
+
+## Features
+
+- Textual notes with title and content
+- Full-text search
+- Sorting
+- Categorization
+- Attachments with thumbnails
+- Bulk actions (change category, archive, trash)
+- Keyboard hotkeys
+
+### Todo
+
+- Checklist implementation
+- Reminders
+- Geolocation
 
 ## Compatibility
 
@@ -30,11 +48,17 @@ After that simply run ```electron-packager .``` command from inside the project 
 
 Otherwise here the specific platform shortcuts for build commands (64bit architectures for Linux and MacOS, 32bit for Windows) that will prepare distributable folders into _dist_:
 
-```package-linux```
+```
+package-linux
+```
 
-```package-mac```
+```
+package-mac
+```
 
-```package-win```
+```
+package-win
+```
 
 ## Developed with love and passion by
 * Federico Iosue - [Website](http://www.iosue.it/federico)
