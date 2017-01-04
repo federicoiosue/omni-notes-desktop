@@ -43,8 +43,7 @@ md-toolbar.md-hue-1 md-input-container {
 
 /*Sidenav*/
 
-#sidenav {
-    height: 100%;
+#drawer-container {
     overflow-y: scroll;
 }
 

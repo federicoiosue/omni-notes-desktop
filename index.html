@@ -13,8 +13,8 @@
 <body ng-app="ONApp" layout="column">
 
     <div ng-include="'app/scripts/toolbar/toolbar.html'"></div>
-    <div role="main" layout="row">
-        <div ng-include="'app/scripts/drawer/drawer.html'"></div>
+    <div role="main" layout="row" flex>
+        <div ng-include="'app/scripts/drawer/drawer.html'" id="drawer-container"></div>
         <ng-view id="rootView" ng-cloak></ng-view>
     </div>
 
