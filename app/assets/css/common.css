@@ -166,12 +166,7 @@ md-fab-speed-dial.ng-hide-animate:not(.ng-hide) md-fab-trigger {
     font-size: x-large;
 }
 
-.note-detail .attachment-container {
-    width: 100%;
-    height: 100%;
-}
-
-.note-detail .attachment {
+.note-detail .attachment-container, .note-detail .attachment-inner-container, .note-detail .attachment {
     width: 100%;
     height: 100%;
 }
