@@ -11,7 +11,6 @@
         </md-list-item>
 
         <!-- Categories -->
-        <md-divider ng-if="categories.length"/>
         <md-list-item class="menu-item md-2-line" ng-repeat="(key, category) in categories" role="link"
                       ng-click="filterCategory(category)" ng-right-click="editCategory(category)"
                       ng-class="{'nav-active': isCurrentNavigation(category)}">

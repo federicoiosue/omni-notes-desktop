@@ -34,6 +34,13 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
         }
     });
 
+    $scope.createNote = function () {
+        let note = {};
+        note.title = "";
+        note.content = "";
+        return note;
+    };
+
     $scope.close = function () {
         if (_.isEqual($scope.note, $scope.originalNote)) {
             $mdDialog.hide();
@@ -129,6 +136,12 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
                 $scope.note.category = category;
             }
         });
+    };
+
+    $scope.countChars = function () {
+        var titleSize = $scope.note.title && $scope.note.title.length;
+        var contentSize = $scope.note.content && $scope.note.content.length;
+        return titleSize + contentSize
     };
 
 }]);

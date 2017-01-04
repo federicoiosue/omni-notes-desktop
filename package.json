@@ -7,7 +7,7 @@
     "start": "electron main.js",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/mac/logo.icns --prune=true --out=dist",
     "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/logo.ico --prune=true --out=dist --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Omni Notes\"",
-    "package-linux" : "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icons/png/512x512.png --prune=true --out=dist"
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icons/png/512x512.png --prune=true --out=dist"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "lodash": "^4.17.2",
     "moment": "^2.17.1",
     "ng-file-upload": "^12.2.13",
+    "nx-popover": "^0.6.12",
     "pdfjs-dist": "^1.6.348",
     "svg-morpheus": "^0.3.0"
   }
