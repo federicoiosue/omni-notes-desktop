@@ -1,7 +1,7 @@
 angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', 'note', '$mdDialog', 'hotkeys', 'Upload', 'thumbnailService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, note, $mdDialog, hotkeys, Upload, thumbnailService) {
 
     $scope.originalNote = note || {};
-    $scope.note = _.cloneDeep($scope.originalNote);
+    $scope.note = _.cloneDeep(note);
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
 
     // Keyboard shortcuts
