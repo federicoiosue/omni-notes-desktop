@@ -1,6 +1,6 @@
 {
   "name": "omni-notes-desktop",
-  "version": "0.0.2",
+  "version": "0.0.3-SNAPSHOT",
   "description": "Omni Notes desktop application",
   "main": "main.js",
   "scripts": {
