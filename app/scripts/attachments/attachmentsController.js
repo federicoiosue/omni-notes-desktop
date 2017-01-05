@@ -22,11 +22,12 @@ angular.module('ONApp').controller('attachmentsController', ['$scope', 'storageS
 
     $scope.isImgOrPdf = function (attachment) {
         return _.some(['image', 'pdf'], function (mimeType) {
-            return attachment.mime_type.indexOf(mimeType) > -1;
+            return attachment.mime_type && attachment.mime_type.indexOf(mimeType) > -1;
         });
     };
 
     $scope.getMimeTypeSimple = function (attachment) {
+        if (!attachment.mime_type) return "";
         var simpleMimeType = _.last(attachment.mime_type.split('/')[1].split('.'));
         return simpleMimeType.charAt(0).toUpperCase() + simpleMimeType.slice(1);
     };
