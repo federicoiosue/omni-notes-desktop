@@ -7,11 +7,6 @@ body {
     overflow: hidden;
 }
 
-::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-}
-
 /*Workaround for nested dmDialog instances*/
 
 .md-dialog-backdrop:nth-of-type(even) {
@@ -45,6 +40,11 @@ md-toolbar.md-hue-1 md-input-container {
 
 #drawer-container {
     overflow-y: scroll;
+}
+
+#drawer-container::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
 }
 
 #rootView {
