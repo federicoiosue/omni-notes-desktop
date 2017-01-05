@@ -49,15 +49,15 @@ After that simply run ```electron-packager .``` command from inside the project 
 Otherwise here the specific platform shortcuts for build commands (64bit architectures for Linux and MacOS, 32bit for Windows) that will prepare distributable folders into _dist_:
 
 ```
-package-linux
+npm run package-linux
 ```
 
 ```
-package-mac
+npm run package-mac
 ```
 
 ```
-package-win
+npm run package-win
 ```
 
 ## Developed with love and passion by

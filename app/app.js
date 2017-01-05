@@ -14,6 +14,7 @@ var ONApp;
         'LocalStorageModule',
         'cfp.hotkeys',
         'ngFileUpload',
+        'nsPopover',
         'angularMoment'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider

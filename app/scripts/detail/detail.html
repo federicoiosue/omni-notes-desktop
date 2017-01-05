@@ -4,7 +4,8 @@
         <div class="md-toolbar-tools">
             <span>Edit</span>
             <span flex></span>
-            <md-button id="add-attachment-button" class="md-icon-button" ngf-select="addAttachment($files)" ngf-multiple="true"
+            <md-button id="add-attachment-button" class="md-icon-button" ngf-select="addAttachment($files)"
+                       ngf-multiple="true"
                        aria-label="Add attachments">
                 <ng-md-icon icon="attachment"/>
             </md-button>
@@ -12,8 +13,25 @@
                 <ng-md-icon ng-if="!note.category" icon="label_outline"/>
                 <ng-md-icon ng-if="note.category" icon="label" style="fill: {{note.category.color}}"/>
             </md-button>
+            <md-button class="md-icon-button" aria-label="Info" ng-if="note.creation"
+                       ns-popover
+                       ns-popover-template="info-popover"
+                       ns-popover-trigger="click"
+                       ns-popover-placement="bottom|right"
+                       ns-popover-timeout="0.1">
+                <ng-md-icon icon="info"/>
+            </md-button>
         </div>
     </md-toolbar>
+
+    <script type="text/ng-template" id="info-popover">
+        <ul>
+            <li><a>Created <span am-time-ago="note.creation / 1000 | amFromUnix"/></a></li>
+            <li><a>Modified <span am-time-ago="note.lastModification / 1000 | amFromUnix"/></a></li>
+            <li><a>{{countChars()}} chars</a></li>
+            <li ng-if="note.attachmentsList.length"><a>{{note.attachmentsList.length}} attachments</a></li>
+        </ul>
+    </script>
 
     <md-dialog-content layout="column" class="md-dialog-content">
 
@@ -36,6 +54,7 @@
     </md-dialog-content>
 
     <md-dialog-actions>
+        <md-button ng-click="close()">Close</md-button>
         <md-button class="md-primary" style="margin-right:20px;" ng-click="saveNote()">Save</md-button>
     </md-dialog-actions>
 

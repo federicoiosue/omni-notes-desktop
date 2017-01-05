@@ -10,4 +10,19 @@ angular.module('ONApp').controller('settingsController', ['$rootScope', '$scope'
         $mdDialog.hide();
     };
 
+    $scope.showChangelog = function() {
+        $mdDialog.show({
+            controllerAs: 'dialogCtrl',
+            controller: function ($mdDialog) {
+                this.confirm = function () {
+                    $mdDialog.hide();
+                };
+            },
+            autoWrap: true,
+            skipHide: true,
+            clickOutsideToClose: true,
+            templateUrl: 'app/scripts/settings/changelog.html'
+        });
+    }
+
 }]);

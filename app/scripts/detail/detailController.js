@@ -16,7 +16,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
         description: "Leaves note editing",
         allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
         callback: function () {
-            confirmClosingModifiedNote();
+            $scope.close();
         }
     }).add({
         combo: "ctrl+c",
@@ -34,7 +34,14 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
         }
     });
 
-    var confirmClosingModifiedNote = function () {
+    $scope.createNote = function () {
+        let note = {};
+        note.title = "";
+        note.content = "";
+        return note;
+    };
+
+    $scope.close = function () {
         if (_.isEqual($scope.note, $scope.originalNote)) {
             $mdDialog.hide();
             return;
@@ -44,6 +51,9 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             controller: function ($mdDialog) {
                 this.confirm = function () {
                     $mdDialog.hide();
+                };
+                this.cancel = function () {
+                    $mdDialog.cancel();
                 };
             },
             preserveScope: true,
@@ -126,6 +136,12 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
                 $scope.note.category = category;
             }
         });
+    };
+
+    $scope.countChars = function () {
+        var titleSize = $scope.note.title && $scope.note.title.length;
+        var contentSize = $scope.note.content && $scope.note.content.length;
+        return titleSize + contentSize
     };
 
 }]);

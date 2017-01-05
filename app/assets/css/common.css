@@ -43,8 +43,7 @@ md-toolbar.md-hue-1 md-input-container {
 
 /*Sidenav*/
 
-#sidenav {
-    height: 100%;
+#drawer-container {
     overflow-y: scroll;
 }
 
@@ -169,4 +168,8 @@ md-fab-speed-dial.ng-hide-animate:not(.ng-hide) md-fab-trigger {
 .note-detail .attachment-container, .note-detail .attachment-inner-container, .note-detail .attachment {
     width: 100%;
     height: 100%;
+}
+
+md-tooltip ._md-content {
+    height: auto;
 }
