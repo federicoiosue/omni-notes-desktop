@@ -8,8 +8,11 @@
 
     <md-dialog-content layout="column" class="md-dialog-content">
 
-        <h3>Omni Notes backup folder</h3>
+        <h4>Omni Notes backup folder</h4>
         <material-file-input notes-folder="{{notesFolder}}" />
+
+        <md-divider/>
+        <md-button ng-click="showChangelog()">Changelog</md-button>
 
     </md-dialog-content>
 
