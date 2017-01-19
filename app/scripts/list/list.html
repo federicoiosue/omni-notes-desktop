@@ -4,20 +4,23 @@
         <md-fab-trigger>
             <md-button aria-label="edit" class="md-warn md-fab" ng-click="editNote()">
                 <md-tooltip md-direction="left" md-visible="tooltipVisible">Edit</md-tooltip>
-                <ng-md-icon icon="edit" />
+                <ng-md-icon icon="edit"/>
             </md-button>
         </md-fab-trigger>
     </md-fab-speed-dial>
 
-    <md-content ng-if="notes.length">
-        <md-list-item ng-repeat="note in notes track by note.creation" ng-click="noteClicked($event, note)"
-                      ng-right-click="noteRightClicked(note)" ng-class="{'selected-note': showAsSelected(note)}"
-                      aria-label="Note">
-            <div ng-include="'app/scripts/list/note.html'" class="note"/>
-            <md-divider/>
-        </md-list-item>
+    <md-content ng-if="shownNotes.length">
+        <div infinite-scroll="loadMore()" data-infinite-scroll-distance='2' data-infinite-scroll-immediate-check='false' data-infinite-scroll-parent="true" >
+            <md-list-item ng-repeat="note in shownNotes track by note.creation"
+                          ng-click="noteClicked($event, note)"
+                          ng-right-click="noteRightClicked(note)" ng-class="{'selected-note': showAsSelected(note)}"
+                          aria-label="Note"flex>
+                <div ng-include="'app/scripts/list/note.html'" class="note"/>
+                <md-divider/>
+            </md-list-item>
+        </div>
     </md-content>
 
-    <empty-view ng-if="!notes.length" navitem="currentNavigation"></empty-view>
+    <empty-view ng-if="!shownNotes.length" navitem="currentNavigation"></empty-view>
 
 </div>

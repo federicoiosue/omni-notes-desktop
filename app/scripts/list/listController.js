@@ -3,6 +3,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     $scope.notesBackupFolder = storageService.getNotesFolder();
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
     $scope.notes = [];
+    $scope.shownNotes = [];
     $scope.selectedNotes = [];
     $scope.multiSelection = false;
     $scope.currentNavigation = navigationService.getNavigation();
@@ -26,6 +27,7 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
     $rootScope.$on(CONSTANTS.NOTES_FILTERED, function (event, notes) {
         $scope.cancelMultiSelection();
         $scope.notes = notes;
+        $scope.shownNotes = _.slice($scope.notes, 0, 20);
         $scope.$applyAsync();
     });
 
@@ -172,6 +174,10 @@ angular.module('ONApp').controller('listController', ['$rootScope', '$scope', '$
 
     $scope.openAttachment = function (attachment) {
         storageService.openAttachment(attachment);
+    };
+
+    $scope.loadMore = function () {
+        $scope.shownNotes = _.concat($scope.shownNotes, _.slice($scope.notes, $scope.shownNotes.length, $scope.shownNotes.length + 20));
     };
 
     notesService.loadNotes($scope.notesBackupFolder);

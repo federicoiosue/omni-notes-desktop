@@ -15,7 +15,8 @@ var ONApp;
         'cfp.hotkeys',
         'ngFileUpload',
         'nsPopover',
-        'angularMoment'])
+        'angularMoment',
+        'infinite-scroll'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {
