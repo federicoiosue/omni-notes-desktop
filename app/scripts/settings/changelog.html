@@ -2,35 +2,38 @@
 
     <md-dialog-content layout="column" class="md-dialog-content">
 
-        <h3>Changelog</h3>
+        <h2>Changelog</h2>
 
         <h4>Version 0.0.4</h4>
         <ul>
-            <li>Infinite scrolling (notes loaded dinamically) used for notes list</li>
+            <li><b>New:</b> Infinite scrolling (notes loaded dinamically) used for notes list</li>
+            <li><i>Fix:</i> Popups background shadows</li>
+            <li><i>Fix:</i> New note category addition</li>
         </ul>
 
         <h4>Version 0.0.3</h4>
         <ul>
-            <li>Added scrollbar to notes list</li>
+            <li><b>New:</b> Added scrollbar to notes list</li>
+            <li><i>Fix:</i> Sidebar scrolling when the number of categories grows</li>
         </ul>
 
         <h4>Version 0.0.2</h4>
         <ul>
-            <li>Added changelog</li>
-            <li>Added note info to detail toolbar</li>
-            <li>Fixed sidebar scrolling</li>
-            <li>Fixed new note keyboard hotkey</li>
+            <li><b>New:</b> Changelog available into settings</li>
+            <li><b>New:</b> Note info to detail toolbar</li>
+            <li><i>Fix:</i> Sidebar scrolling</li>
+            <li><i>Fix:</i> New note keyboard hotkey</li>
         </ul>
 
         <h4>Version 0.0.1</h4>
         <ul>
-            <li>First preview release</li>
+            <li><b>First preview release</b></li>
         </ul>
 
     </md-dialog-content>
 
-    <!--<md-dialog-actions>-->
-        <!--<md-button class="md-primary" ng-click="closeSettings()">Close</md-button>-->
-    <!--</md-dialog-actions>-->
+    <md-dialog-actions>
+        <md-button ng-click="dialogCtrl.confirm()">Close</md-button>
+    </md-dialog-actions>
 
 </md-dialog>
