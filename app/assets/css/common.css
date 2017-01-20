@@ -7,23 +7,6 @@ body {
     overflow: hidden;
 }
 
-/*Workaround for nested dmDialog instances*/
-
-.md-dialog-backdrop:nth-of-type(even) {
-    z-index: 81;
-}
-
-.md-dialog-backdrop:nth-of-type(odd) {
-    z-index: 79;
-}
-
-.md-dialog-container:nth-of-type(even) {
-    z-index: 82;
-}
-
-.md-dialog-container:nth-of-type(odd) {
-    z-index: 80;
-}
 
 /*Toolbar*/
 
