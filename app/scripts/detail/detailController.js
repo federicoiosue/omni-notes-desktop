@@ -1,7 +1,7 @@
 angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', '$q', '$log', 'CONSTANTS', 'notesService', 'storageService', 'note', '$mdDialog', 'hotkeys', 'Upload', 'thumbnailService', function ($rootScope, $scope, $q, $log, CONSTANTS, notesService, storageService, note, $mdDialog, hotkeys, Upload, thumbnailService) {
 
     $scope.originalNote = note || {};
-    $scope.note = _.cloneDeep(note);
+    $scope.note = _.cloneDeep($scope.originalNote);
     $scope.attachmentsRoot = storageService.getAttachmentsFolder();
 
     // Keyboard shortcuts
@@ -128,7 +128,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             templateUrl: 'app/scripts/categories/categoriesSelection.html',
             clickOutsideToClose: true,
             locals: {
-                category: $scope.note.category,
+                category: $scope.note.category || {},
                 allowAdd: false
             }
         }).then(function (category) {
