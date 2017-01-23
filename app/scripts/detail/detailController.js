@@ -19,7 +19,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             $scope.close();
         }
     }).add({
-        combo: "ctrl+c",
+        combo: "ctrl+e",
         description: "Set category",
         allowIn: ['INPUT', 'SELECT', 'TEXTAREA'],
         callback: function () {
