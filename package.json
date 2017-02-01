@@ -5,9 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icons/png/512x512.png --prune=true --out=dist",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/mac/logo.icns --prune=true --out=dist",
-    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/logo.ico --prune=true --out=dist --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Omni Notes\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=icons/png/512x512.png --prune=true --out=dist --asar=true",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=icons/mac/logo.icns --prune=true --out=dist --asar=true",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icons/win/logo.ico --prune=true --out=dist --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Omni Notes\" --asar=true",
     "package-all": "npm run package-linux && npm run package-mac && npm run package-win"
   },
   "repository": {
@@ -35,7 +35,7 @@
     "angular-bootstrap-colorpicker": "^3.0.25",
     "angular-hotkeys": "^1.7.0",
     "angular-local-storage": "^0.5.0",
-    "angular-material": "^1.1.1",
+    "angular-material": "^1.1.2",
     "angular-material-icons": "^0.7.1",
     "angular-moment": "^1.0.1",
     "angular-route": "^1.5.8",
