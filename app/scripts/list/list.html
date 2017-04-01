@@ -10,7 +10,7 @@
     </md-fab-speed-dial>
 
     <md-content ng-if="shownNotes.length">
-        <div infinite-scroll="loadMore()" data-infinite-scroll-distance='2' data-infinite-scroll-immediate-check='false' data-infinite-scroll-parent="true" >
+        <div infinite-scroll="loadMore()" data-infinite-scroll-distance='1' data-infinite-scroll-immediate-check='false' data-infinite-scroll-parent="true" >
             <md-list-item ng-repeat="note in shownNotes track by note.creation"
                           ng-click="noteClicked($event, note)"
                           ng-right-click="noteRightClicked(note)" ng-class="{'selected-note': showAsSelected(note)}"

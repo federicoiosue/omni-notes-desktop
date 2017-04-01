@@ -5,7 +5,7 @@ angular.module('ONApp').controller('toolbarController', ['$rootScope', '$scope',
     $scope.searchQuery;
 
     var searchTimer;
-    let QUERY_DELAY = 350;
+    let QUERY_DELAY = 250;
     let MIN_QUERY_CHARS = 2;
 
     // Keyboard shortcuts
