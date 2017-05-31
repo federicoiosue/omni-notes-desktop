@@ -11,7 +11,7 @@
 
     <md-content ng-if="notes.length">
         <md-virtual-repeat-container id="vertical-container" md-auto-shrink="true" ng-style="ctrl.getListHeight()" flex>
-            <div md-virtual-repeat="note in dynamicItems" class="repeated-item" md-on-demand ng-click="noteClicked($event, note)"
+            <div md-virtual-repeat="note in dynamicItems" class="repeated-item" md-on-demand
             ng-right-click="noteRightClicked(note)" ng-class="{'selected-note': showAsSelected(note)}"
             aria-label="Note">
             <div ng-include="'app/scripts/list/note.html'" class="note"/>
