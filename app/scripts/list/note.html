@@ -1,6 +1,6 @@
 <md-item-content layout="row" class="note-container">
     <div class="category-ribbon" style="background: {{note.category ? note.category.color : 'transparent'}};"/>
-    <div layout="column" ng-click="noteClicked($event, note)" flex>
+    <div layout="column" ng-click="noteClicked($event, note)" class="note-texts" flex>
         <h3 class="note-title">{{note.title}}</h3>
         <p flex class="note-body">{{note.content}}</p>
         <div ng-include="'app/scripts/list/note-date.html'"/>
