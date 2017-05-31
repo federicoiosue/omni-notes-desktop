@@ -9,14 +9,14 @@ var ONApp;
         'ngRoute',
         'ngMaterial',
         'ngAnimate',
+        "ngAria",
         'ngMdIcons',
         'colorpicker.module',
         'LocalStorageModule',
         'cfp.hotkeys',
         'ngFileUpload',
         'nsPopover',
-        'angularMoment',
-        'infinite-scroll'])
+        'angularMoment'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/', {
