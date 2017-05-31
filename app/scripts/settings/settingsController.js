@@ -19,7 +19,7 @@ angular.module('ONApp').controller('settingsController', ['$rootScope', '$scope'
                 };
             },
             autoWrap: true,
-            skipHide: true,
+            multiple: true,
             clickOutsideToClose: true,
             templateUrl: 'app/scripts/settings/changelog.html'
         });

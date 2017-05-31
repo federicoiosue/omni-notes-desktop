@@ -58,7 +58,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             },
             preserveScope: true,
             autoWrap: true,
-            skipHide: true,
+            multiple: true,
             clickOutsideToClose: true,
             templateUrl: 'app/scripts/detail/undoChangesDialog.html'
         }).then(function () {
@@ -107,7 +107,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
             },
             preserveScope: true,
             autoWrap: true,
-            skipHide: true,
+            multiple: true,
             clickOutsideToClose: true,
             templateUrl: 'app/scripts/detail/attachmentDeletionDialog.html'
         }).then(function () {
@@ -123,7 +123,7 @@ angular.module('ONApp').controller('detailController', ['$rootScope', '$scope', 
 
     $scope.setCategory = function () {
         $mdDialog.show({
-            skipHide: true,
+            multiple: true,
             controller: 'categoriesSelectionController',
             templateUrl: 'app/scripts/categories/categoriesSelection.html',
             clickOutsideToClose: true,
