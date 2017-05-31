@@ -68,6 +68,10 @@ empty-view p {
     font-weight: bolder;
 }
 
+.virtual-repeat #vertical-container {
+    height: 592px;
+}
+
 .selected-note {
     background-color: var(--selection-color);
 }

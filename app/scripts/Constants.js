@@ -13,5 +13,6 @@ ONApp.constant('CONSTANTS', {
     SORT_TITLE: 'title',
     SORT_ALARM: 'alarm',
     SORT_CREATION: 'creation',
-    SORT_LAST_MODIFICATION: 'lastModification'
+    SORT_LAST_MODIFICATION: 'lastModification',
+    PAGE_SIZE: 25
 });
