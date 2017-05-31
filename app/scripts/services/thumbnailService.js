@@ -3,17 +3,21 @@ angular.module("ONApp").service('thumbnailService', ['$q', 'CONSTANTS', function
     var fs = require('fs-extra');
 
     this.getAttachmentThumbnail = function (attachment, attachmentsFolder) {
-        if (attachment.mime_type.match('image')) {
+        if (mimeTypeMatches(attachment, 'image')) {
             return this.getImageThumbnail(attachment, attachmentsFolder);
-        } else if (attachment.mime_type.match('pdf')) {
+        } else if (mimeTypeMatches(attachment, 'pdf')) {
             return this.getPdfThumbnail(attachment, attachmentsFolder);
-        } else if (attachment.mime_type.match('video')) {
+        } else if (mimeTypeMatches(attachment, 'video')) {
             return this.getVideoThumbnail(attachment, attachmentsFolder);
-        } else if (attachment.mime_type.match('audio')) {
+        } else if (mimeTypeMatches(attachment, 'audio')) {
             return this.getAudioThumbnail(attachment, attachmentsFolder);
         } else {
             return './app/assets/images/file.svg';
         }
+    };
+
+    var mimeTypeMatches = function(attachment, mimeType) {
+        return attachment.mime_type && attachment.mime_type.match(mimeType);
     };
 
     this.getImageThumbnail = function (attachment, attachmentsFolder) {

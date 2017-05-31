@@ -9,6 +9,7 @@ var ONApp;
         'ngRoute',
         'ngMaterial',
         'ngAnimate',
+        "ngAria",
         'ngMdIcons',
         'colorpicker.module',
         'LocalStorageModule',

@@ -4,6 +4,10 @@ angular.module('ONApp').controller('toolbarController', ['$rootScope', '$scope',
     $scope.multiSelection = false;
     $scope.searchQuery;
 
+    var searchTimer;
+    let QUERY_DELAY = 250;
+    let MIN_QUERY_CHARS = 2;
+
     // Keyboard shortcuts
     hotkeys.add({
         combo: 'ctrl+f',
@@ -28,10 +32,17 @@ angular.module('ONApp').controller('toolbarController', ['$rootScope', '$scope',
     };
 
     $scope.queryChanged = function () {
-        var regexp = new RegExp(escapeSearchQuery($scope.searchQuery));
-        notesService.filterNotes(function (note) {
-            return (note.title && regexp.test(note.title)) || (note.content && regexp.test(note.content));
-        });
+        if ($scope.searchQuery.length >= MIN_QUERY_CHARS || $scope.searchQuery.length == 0) {
+            if (searchTimer) {
+                clearTimeout(searchTimer);
+            }
+            var regexp = new RegExp(escapeSearchQuery($scope.searchQuery));
+            searchTimer = setTimeout(function () {
+                notesService.filterNotes(function (note) {
+                    return (note.title && regexp.test(note.title)) || (note.content && regexp.test(note.content));
+                });
+            }, QUERY_DELAY);
+        }
     };
 
     $scope.$watch('showSearch', function (show) {

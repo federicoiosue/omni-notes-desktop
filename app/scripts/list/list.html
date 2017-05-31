@@ -1,21 +1,22 @@
-<div ng-controller="listController" layout="column" class="relative list-root" flex>
+<div ng-controller="listController as ctrl" layout="column" class="relative list-root virtual-repeat" flex>
 
     <md-fab-speed-dial id="fab" ng-show="isFabVisible()" class="md-scale md-fab-bottom-right">
         <md-fab-trigger>
             <md-button aria-label="edit" class="md-warn md-fab" ng-click="editNote()">
                 <md-tooltip md-direction="left" md-visible="tooltipVisible">Edit</md-tooltip>
-                <ng-md-icon icon="edit" />
+                <ng-md-icon icon="edit"/>
             </md-button>
         </md-fab-trigger>
     </md-fab-speed-dial>
 
     <md-content ng-if="notes.length">
-        <md-list-item ng-repeat="note in notes track by note.creation" ng-click="noteClicked($event, note)"
-                      ng-right-click="noteRightClicked(note)" ng-class="{'selected-note': showAsSelected(note)}"
-                      aria-label="Note">
+        <md-virtual-repeat-container id="vertical-container" md-auto-shrink="true" ng-style="ctrl.getListHeight()" flex>
+            <div md-virtual-repeat="note in dynamicItems" class="repeated-item" md-on-demand
+            ng-right-click="noteRightClicked(note)" ng-class="{'selected-note': showAsSelected(note)}"
+            aria-label="Note">
             <div ng-include="'app/scripts/list/note.html'" class="note"/>
-            <md-divider/>
-        </md-list-item>
+            </div>
+        </md-virtual-repeat-container>
     </md-content>
 
     <empty-view ng-if="!notes.length" navitem="currentNavigation"></empty-view>

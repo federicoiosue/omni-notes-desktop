@@ -14,7 +14,7 @@ angular.module('ONApp').service('hotkeysRegistrationService', ['hotkeys', functi
         // addHotkey("ctrl+n", "New note");
         addHotkey("ctrl+s", "Save note or category");
         addHotkey("esc", "Leaves note editing");
-        addHotkey("ctrl+c", "Set category during note editing");
+        addHotkey("ctrl+e", "Set category during note editing");
         addHotkey("ctrl+o", "Add attachments");
     }
 

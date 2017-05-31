@@ -7,28 +7,6 @@ body {
     overflow: hidden;
 }
 
-::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-}
-
-/*Workaround for nested dmDialog instances*/
-
-.md-dialog-backdrop:nth-of-type(even) {
-    z-index: 81;
-}
-
-.md-dialog-backdrop:nth-of-type(odd) {
-    z-index: 79;
-}
-
-.md-dialog-container:nth-of-type(even) {
-    z-index: 82;
-}
-
-.md-dialog-container:nth-of-type(odd) {
-    z-index: 80;
-}
 
 /*Toolbar*/
 
@@ -47,9 +25,14 @@ md-toolbar.md-hue-1 md-input-container {
     overflow-y: scroll;
 }
 
+#drawer-container::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
 #rootView {
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .menu-item ng-md-icon {
@@ -85,6 +68,10 @@ empty-view p {
     font-weight: bolder;
 }
 
+.virtual-repeat #vertical-container {
+    height: 592px;
+}
+
 .selected-note {
     background-color: var(--selection-color);
 }
@@ -96,8 +83,11 @@ empty-view p {
 
 .note .category-ribbon {
     width: 15px;
-    position: relative;
-    left: -15px;
+    margin-right: 10px;
+}
+
+.note .note-texts {
+    padding-top: 10px;
 }
 
 .note .attachment-container {

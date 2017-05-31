@@ -61,7 +61,7 @@ npm run package-win
 ```
 
 ## Developed with love and passion by
-* Federico Iosue - [Website](http://www.iosue.it/federico)
+* Federico Iosue - [Website](http://federico.iosue.it)
 
 ## License
 The application is licensed under [GPL3](LICENSE.md) so, if you want to use it fully or any part of it you **have to** release the source code.
